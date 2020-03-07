@@ -1,2 +1,95 @@
-<!--pages/user/index.wxml-->
-<text>pages/user/index.wxml</text>
+<view class="page">
+  <block>
+    <view
+      class="user-info"
+      wx:if="{{userData && userData.id}}"
+    >
+      <image
+        src="{{userData.avatar}}"
+        class="user-avatar"
+      />
+      <view class="user-main">
+        <view class="user-name">{{userData.name}}</view>
+        <view class="user-location">我子啊北京</view>
+      </view>
+    </view>
+    <view
+      wx:else
+      class="user-empty"
+    >
+      <view
+        class="user-avatar user-empty-avatar"
+        bind:tap="handleLogin"
+      >点击登录</view>
+    </view>
+    <!-- 用户菜单 -->
+    <view class="user-menus">
+      <!-- 我的消息 -->
+      <view
+        class="user-menu-item line-normal-bottom"
+        bind:tap="handleGoLink"
+      >
+        <image
+          class="user-menu-icon"
+          src="../../assets/img/user/message.png"
+          mode="aspectFill"
+        />
+        <text class="user-menu-name">消息</text>
+        <image
+          src="../../assets/img/common/arrow-right.png"
+          class="user-menu-arrow"
+        />
+      </view>
+      <!-- 我的订单 -->
+      <view
+        class="user-menu-item line-normal-bottom"
+        bind:tap="handleGoLink"
+      >
+        <image
+          class="user-menu-icon"
+          src="../../assets/img/user/order.png"
+          mode="aspectFill"
+        />
+        <text class="user-menu-name">订单</text>
+        <image
+          src="../../assets/img/common/arrow-right.png"
+          class="user-menu-arrow"
+        />
+      </view>
+      <!-- 我的位置 -->
+      <view
+        class="user-menu-item line-normal-bottom"
+        bind:tap="handleGoLink"
+      >
+        <image
+          class="user-menu-icon"
+          src="../../assets/img/user/location.png"
+          mode="aspectFill"
+        />
+        <text class="user-menu-name">我的位置</text>
+        <image
+          src="../../assets/img/common/arrow-right.png"
+          class="user-menu-arrow"
+        />
+      </view>
+    </view>
+
+    <view
+      wx:if="{{version}}"
+      class="app-version"
+    >Ver.{{version}}</view>
+    <!-- 测试，测玩删除 -->
+    <view class="test-area">{{ code }}</view>
+    <view
+      class="user-logout"
+      wx:if="{{userData}}"
+    >
+      <x-button
+        class="x-btn-class"
+        size="middle"
+        type="primary"
+        radius="{{8}}"
+      >退出</x-button>
+    </view>
+  </block>
+</view>

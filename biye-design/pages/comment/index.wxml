@@ -1,0 +1,32 @@
+<view class="page">
+  <view class="comment-box">
+    <textarea
+      class="comment-input"
+      auto-height
+      placeholder="填写评价内容"
+    />
+    <view class="comment-btn">
+      <x-button
+        size="small"
+        type="primary"
+        class="x-btn-class"
+      >提交</x-button>
+    </view>
+  </view>
+
+  <view class="comment-list">
+    <block
+      wx:for="{{commentList}}"
+      wx:key="id"
+    >
+      <comment comment="{{item}}" />
+    </block>
+  </view>
+
+  <view
+    wx:if="{{listEnd}}"
+    class="list-end-tip"
+  >
+    <no-more>我已经到底了</no-more>
+  </view>
+</view>

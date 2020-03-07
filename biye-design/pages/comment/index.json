@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "全部评论",
+  "usingComponents": {
+    "comment": "/components/comment-item/index",
+    "x-button": "/components/button/button",
+    "no-more": "/components/no-more/index"
+  }
+}

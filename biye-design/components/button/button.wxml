@@ -1,0 +1,10 @@
+<view class="{{className}}" style="border-radius:{{radius}}rpx">
+  <view class="x-button-text">
+    <image
+      class="x-button-icon"
+      wx:if="{{icon}}"
+      src="{{icon}}"
+    />
+    <slot></slot>
+  </view>
+</view>

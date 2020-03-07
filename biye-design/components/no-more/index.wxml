@@ -1,0 +1,9 @@
+<view class="end-tip">
+  <view
+    class="end-line"
+    style="background-color:{{lineColor}};"
+  ></view>
+  <view class="end-word">
+    <slot></slot>
+  </view>
+</view>

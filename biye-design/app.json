@@ -2,20 +2,22 @@
   "pages": [
     "pages/index/index",
     "pages/shop/index",
-    "pages/user/index"
+    "pages/user/index",
+    "pages/shop/detail/index",
+    "pages/comment/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "欢迎",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#fff9f6",
+    "backgroundColor": "#f0f0f0",
     "backgroundTextStyle": "dark"
   },
   "tabBar": {
     "color": "#918d89",
     "selectedColor": "#2e2e2e",
     "backgroundColor": "#fff",
-    "borderStyle": "white",
+    "borderStyle": "black",
     "list": [
       {
         "pagePath": "pages/index/index",

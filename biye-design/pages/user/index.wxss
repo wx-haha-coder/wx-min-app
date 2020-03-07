@@ -1,1 +1,125 @@
-/* pages/user/index.wxss */
+.page {
+  min-height: 100vh;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  box-sizing: border-box;
+}
+
+.user-empty {
+  text-align: center;
+}
+
+.user-empty .user-name {
+  padding-top: 20rpx;
+  color: #74706C;
+}
+
+.user-empty-avatar {
+  margin: 0 auto;
+  line-height: 144rpx;
+  text-align: center;
+  color: #74706C;
+  font-size: 30rpx;
+}
+
+.user-info {
+  display: flex;
+  background-color: #fff;
+  border-radius: 8rpx;
+  padding: 20rpx;
+}
+
+.user-login-btn {
+  padding-top: 12rpx;
+  color: #484848;
+  font-size: 40rpx;
+  line-height: 58rpx;
+  font-weight: 500;
+}
+
+.user-avatar {
+  width: 144rpx;
+  height: 144rpx;
+  border-radius: 50%;
+  background-color: #eee;
+}
+
+.user-main {
+  padding-left: 50rpx;
+  flex: 1;
+}
+
+.user-name {
+  padding-top: 12rpx;
+  color: #484848;
+  font-size: 40rpx;
+  line-height: 58rpx;
+  font-weight: 500;
+}
+
+.user-location {
+  padding: 18rpx 0 8rpx;
+  color: #B0A9A3;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  font-weight: 500;
+}
+
+.user-menus {
+  margin-top: 60rpx;
+  border-radius: 8rpx;
+}
+
+.user-menu-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 40rpx 0;
+}
+
+.user-menu-icon {
+  width: 38rpx;
+  height: 38rpx;
+}
+
+.user-menu-name {
+  color: #74706C;
+  font-size: 30rpx;
+  line-height: 44rpx;
+  margin-left: 16rpx;
+}
+
+.user-logout {
+  margin-top: 160rpx;
+}
+
+.user-menu-arrow {
+  width: 20rpx;
+  height: 30rpx;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.x-btn-class {
+  display: block;
+}
+
+.app-version {
+  margin-top: 50rpx;
+  text-align: center;
+  font-size: 24rpx;
+  padding: 10rpx;
+  color: #74706C;
+}
+
+/* TODO:切记删除 */
+.test-area {
+  background-color: #f0f0f0;
+  border-radius: 8rpx;
+  padding: 10rpx;
+  text-align: center;
+  margin-top: 40rpx;
+}

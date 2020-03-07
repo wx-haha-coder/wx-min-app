@@ -1,0 +1,44 @@
+.page {
+  padding-top: 30rpx;
+}
+
+.comment-list {
+  padding-top: 60rpx;
+}
+
+.comment-box {
+  border-radius: 5rpx;
+}
+
+.comment-input {
+  background-color: #f2f2f2;
+  height: 340rpx;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  padding: 30rpx;
+  resize: none;
+  text-align: justify;
+  width: auto;
+}
+
+.comment-input:focus {
+  background-color: #fff;
+  color: #484848;
+}
+
+.x-btn-class {
+  display: block;
+  width: 60px;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.comment-btn {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 20rpx;
+}
+
+.list-end-tip {
+  width: 100%;
+}

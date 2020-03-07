@@ -1,0 +1,38 @@
+<view
+  wx:if="{{!pageLoading}}"
+  class="page-cont"
+>
+  <view class="main {{ isiPhoneX ? 'main-for-x' : '' }}">
+    <image
+      src="{{detail.img_url}}"
+      class="banner-img"
+      mode="aspectFill"
+    />
+  </view>
+  <view class="page product-content">
+    <view class="line-normal-bottom product-main">
+      <view class="product-title">{{detail.title}}</view>
+      <view class="product-sub-title">{{detail.subTitle}}</view>
+      <view class="product-price">
+        <image
+          src="../../../assets/img/common/rmp-active.png"
+          class="product-price-img"
+          mode="aspectFill"
+        />
+        <text class="product-price-num primary-color">{{detail.price}}</text>
+        <text class="product-price-unit">元</text>
+      </view>
+    </view>
+    <view class="product-desc">{{detail.desc}}</view>
+
+    <view class="fix-end bottom-btns">
+      <x-button
+        size="large"
+        type="primary"
+        class="x-btn-class"
+        bind:tap="handleBuy"
+        data-id="{{detail.id}}"
+      >购买</x-button>
+    </view>
+  </view>
+</view>

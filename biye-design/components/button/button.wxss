@@ -1,0 +1,96 @@
+.x-button {
+  box-sizing: border-box;
+  border: 3rpx solid #fc504e;
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #fc504e;
+  background: #fff;
+  height: 68rpx;
+  line-height: 62rpx;
+  text-align: center;
+}
+
+.x-button-text .x-button-icon {
+  width: 30rpx;
+  height: 30rpx;
+  vertical-align: middle;
+  margin-right: 10rpx;
+  position: relative;
+  top: -2rpx;
+}
+
+.x-button.x-button-primary {
+  color: #fff;
+  background: #fc504e;
+  border-color: #fc504e;
+}
+
+.x-button.x-button-none {
+  color: #fc504e;
+  background: transparent;
+  border-color: #fff;
+}
+
+.x-button.is-disabled {
+  color: #fff;
+  border-color: #FEE5E2;
+  background: #FEE5E2;
+}
+
+.x-button.x-button-mini {
+  font-size: 24rpx;
+  height: 52rpx;
+  font-weight: 500;
+}
+
+.x-button-mini.x-radius {
+  border-radius: 6rpx;
+}
+
+
+.x-button.x-button-small {
+  height: 62rpx;
+  line-height: 58rpx;
+  font-weight: 600;
+}
+
+.x-button-small.x-radius {
+  border-radius: 10rpx;
+}
+
+.x-button.x-button-middle {
+  font-size: 34rpx;
+  height: 92rpx;
+  line-height: 88rpx;
+}
+
+.x-button-middle.x-radius {
+  border-radius: 14rpx;
+}
+
+.x-button.x-button-large {
+  font-size: 34rpx;
+  height: 104rpx;
+  line-height: 100rpx;
+}
+
+.x-button-large.x-radius {
+  border-radius: 16rpx;
+}
+
+.x-button.x-button-middle .x-button-text .x-button-icon {
+  width: 54rpx;
+  height: 54rpx;
+  margin-right: 16rpx;
+  top: -6rpx;
+}
+
+.x-button.x-button-mini .x-button-text {
+  font-size: 24rpx;
+  line-height: 46rpx;
+  transform: scale(.916);
+}
+
+.x-radius {
+  border-radius: 16rpx;
+}

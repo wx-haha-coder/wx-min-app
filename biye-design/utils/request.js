@@ -1,21 +1,8 @@
 
-const ENV = 'qa'; // 注意：禁止在 feature 分支中提交这行修改！
-
-let apiBaseUrl = '';
-
-switch (ENV) {
-  case 'prod':
-    apiBaseUrl = 'https://api.xindebaby.com';
-    break;
-  case 'dev':
-    apiBaseUrl = 'https://api-qa.xindebaby.com';
-    break;
-  default:
-    break;
-}
+const { env, apiBaseUrl } = require('./env');
 
 /**
- * wx.request 封装
+ * request 封装
  * @param {Object} data - 参数
  * @param {Object} config - 请求配置
  * @param {string} config.method - 请求方法
@@ -26,7 +13,7 @@ switch (ENV) {
 const request = (data, config, resolve, reject) => {
   const app = getApp();
   const token = app.globalData.jwt_token;
-  const url = `${apiUrl}${config.path}`;
+  const url = `${apiBaseUrl}${config.path}`;
   wx.request({
     url,
     method: config.method || 'GET',
@@ -60,9 +47,6 @@ const post = (path, params) => {
 };
 
 module.exports = {
-  ENV,
-  webUrl,
-  apiUrl,
   get,
   post,
 };

@@ -1,0 +1,27 @@
+/* 列表到底 */
+.end-tip {
+  position: relative;
+  width: 100%;
+  font-size: 26rpx;
+  line-height: 44rpx;
+  text-align: center;
+  padding:24rpx 0;
+}
+
+.end-line {
+  width: 80%;
+  height: 2rpx;
+  display: block;
+  background: #eee;
+  margin: 0 auto;
+}
+
+.end-word {
+  position: absolute;
+  background-color: #fff;
+  color: #CCC6C0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 8rpx 1em;
+}
