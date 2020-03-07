@@ -1,6 +1,6 @@
 const { get, post } = require('../utils/request');
 
-export const shop = {
+module.exports = {
   /**
    * 购买下单
    */

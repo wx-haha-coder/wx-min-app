@@ -1,6 +1,6 @@
 const { get, post } = require('../utils/request');
 
-export const home = {
+module.exports = {
   /**
    * 获取首页列表
    */

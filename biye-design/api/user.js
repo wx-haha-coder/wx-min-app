@@ -1,6 +1,6 @@
 const { get, post } = require('../utils/request');
 
-export const user = {
+module.exports = {
   /**
    * 用户登录
    */

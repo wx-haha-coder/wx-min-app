@@ -4,7 +4,8 @@
     "pages/shop/index",
     "pages/user/index",
     "pages/shop/detail/index",
-    "pages/comment/index"
+    "pages/comment/index",
+    "pages/location/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",
