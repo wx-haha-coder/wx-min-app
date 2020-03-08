@@ -72,6 +72,13 @@
 					"id": -1,
 					"name": "当前位置",
 					"pathName": "pages/location/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的订单",
+					"pathName": "pages/user/order/index",
 					"scene": null
 				}
 			]

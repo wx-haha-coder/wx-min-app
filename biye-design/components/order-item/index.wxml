@@ -1,0 +1,20 @@
+<view class="wrap">
+  <view class="item-content line-normal-bottom">
+    <view class="cover-img">
+      <image src="https://content-img.xindebaby.com/3da666be804548f0896cf2cc93f3f28e_900_500.jpg?imageMogr2/auto-orient/thumbnail/!168x168r/|imageslim" />
+    </view>
+    <view class="item-main">
+      <view class="item-name text-hidden">我单杀基督教撒旦哈萨克计划</view>
+      <view class="item-subinfo item-subtext">数量：2</view>
+      <view class="item-price item-subtext">
+        金额：
+        <text>110</text>
+      </view>
+    </view>
+  </view>
+  <view class="item-action">
+    <x-button size="small" type="primary" radius="{{6}}" class="x-btn-class">
+      <text class="buy-btn">再次购买</text>
+    </x-button>
+  </view>
+</view>

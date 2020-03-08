@@ -34,7 +34,7 @@ Component({
   },
   lifetimes: {
     attached () {
-      const classNames = ['x-button'];
+      const classNames = ['x-button', 'x-btn-class'];
       const { size, type, disabled, radius } = this.data;
       if (size === 'mini') {
         classNames.push('x-button-mini')

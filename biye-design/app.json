@@ -5,7 +5,8 @@
     "pages/user/index",
     "pages/shop/detail/index",
     "pages/comment/index",
-    "pages/location/index"
+    "pages/location/index",
+    "pages/user/order/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",

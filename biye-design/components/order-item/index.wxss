@@ -1,0 +1,55 @@
+.wrap {
+  padding: 24rpx 32rpx;
+  border-radius: 6rpx;
+  box-shadow: 0 0 8rpx rgba(0, 0, 0, 0.13);
+}
+
+.item-content {
+  position: relative;
+  display: flex;
+}
+
+.item-content::after {
+  border-bottom: 1px solid rgb(223, 223, 223);
+}
+
+.cover-img image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.item-main {
+  margin-left: 40rpx;
+  overflow: hidden;
+  padding-bottom: 30rpx;
+  flex: 1;
+}
+
+.item-name {
+  color: #484848;
+  font-size: 32rpx;
+  line-height: 50rpx;
+  font-weight: 500;
+}
+
+.item-subtext {
+  color: #B0A9A3;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  font-weight: 500;
+  padding-top: 4rpx;
+}
+
+.item-action {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24rpx;
+}
+
+.x-btn-class {
+  width: 140rpx;
+}
+
+.x-btn-class .buy-btn{
+  font-size: 24rpx;
+}

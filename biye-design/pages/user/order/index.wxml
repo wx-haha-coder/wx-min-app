@@ -1,0 +1,13 @@
+<view class="tab-list">
+  <scroll-view bindscroll="" class="tab-scroll-content">
+    <block wx:for="{{tabList}}" wx:key="id">
+      <view class="tab-item {{currentTab === item.id ? 'active' :'' }}" bind:tap="changeTab" data-id="{{item.id}}">
+        <view class="tab-item-label">{{item.label}}</view>
+      </view>
+    </block>
+  </scroll-view>
+</view>
+<!-- 订单列表 -->
+<view class="page order-list">
+  <order-item></order-item>
+</view>
