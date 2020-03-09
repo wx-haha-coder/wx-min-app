@@ -1,4 +1,7 @@
 // app.js
+const {
+  login
+} = require('./api/user.js')
 App({
   /**
    *  globalData
@@ -11,18 +14,19 @@ App({
     loction: '',
     isiPhoneX: false,
   },
-  onLaunch () {
+  onLaunch() {
     this.checkLogin();
     this.initData();
   },
-  checkLogin () {
-  },
-  initData () {
+  checkLogin() {},
+  initData() {
     const version = wx.getSystemInfoSync().SDKVersion;
     this.globalData.version = version;
   },
-  loginCallback (callback) {
-    const { loginStatus } = this.globalData;
+  loginCallback(callback) {
+    const {
+      loginStatus
+    } = this.globalData;
     if (loginStatus) {
       callback();
     } else {
@@ -30,5 +34,19 @@ App({
         callback();
       };
     }
+  },
+  login(data) {
+    console.log('??? data', data)
+    const params = {
+      wxapp_id: '10002',
+      user_info: data.rawData,
+      encrypted_data: data.encryptedData,
+      iv: data.iv,
+      signature: data.signature,
+    }
+    login(params).then(resp => {
+      console.log('??? login back', resp)
+
+    })
   },
 });

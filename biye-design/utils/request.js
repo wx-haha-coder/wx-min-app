@@ -1,5 +1,7 @@
-
-const { env, apiBaseUrl } = require('./env');
+const {
+  env,
+  apiBaseUrl
+} = require('./env');
 
 /**
  * request 封装
@@ -14,12 +16,18 @@ const request = (data, config, resolve, reject) => {
   const app = getApp();
   const token = app.globalData.jwt_token;
   const url = `${apiBaseUrl}${config.path}`;
+  const {
+    header,
+    ...reset
+  } = config.option;
   wx.request({
     url,
     method: config.method || 'GET',
     header: {
       Authorization: token ? `Bearer ${token}` : '',
+      ...header,
     },
+    ...reset,
     data: data || {},
     success: (res) => resolve(res.data),
     fail: (err) => reject(err),
@@ -36,10 +44,11 @@ const get = (path, params) => {
   });
 };
 
-const post = (path, params) => {
+const post = (path, params, option) => {
   const config = {
     method: 'POST',
     path,
+    option,
   };
   return new Promise((resolve, reject) => {
     request(params, config, resolve, reject);

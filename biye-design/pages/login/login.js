@@ -13,12 +13,14 @@ Page({
    * 授权登录
    */
   getUserInfo(e) {
-    const _this = this;
+    const that = this;
     console.log(e);
-    App.getUserInfo(e, () => {
-      // 跳转回原页面
-      _this.onNavigateBack();
-    });
+    wx.getUserInfo({
+      success: function (res) {
+        const { userInfo } = res;
+        App.login(res)
+      }
+    })
   },
 
   /**
