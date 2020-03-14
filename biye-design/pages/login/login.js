@@ -1,12 +1,16 @@
 const App = getApp();
 
 Page({
-
   /**
    * 页面的初始数据
    */
-  data: {
+  data: {},
 
+  onShow() {
+    console.log(App.checkLogin());
+    if (App.checkLogin()) {
+      this.navigateBack();
+    }
   },
 
   /**
@@ -14,26 +18,27 @@ Page({
    */
   getUserInfo(e) {
     const that = this;
-    console.log(e);
     wx.getUserInfo({
-      success: function (res) {
+      success: function(res) {
         const { userInfo } = res;
-        App.login(res)
+        App.login(res, () => {
+          that.navigateBack();
+        });
       }
-    })
+    });
   },
 
   /**
    * 暂不登录
    */
   onNotLogin() {
-    this.onNavigateBack();
+    this.navigateBack();
   },
 
   /**
    * 授权成功 跳转回原页面
    */
-  onNavigateBack() {
+  navigateBack() {
     wx.navigateBack();
-  },
-})
+  }
+});

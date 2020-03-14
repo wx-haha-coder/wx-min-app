@@ -8,7 +8,7 @@ module.exports = {
    * 用户登录
    */
   login: (data) => {
-    const path = `/school/web/index.php?s=/api/user/login`;
+    const path = '/user/login';
     return post(path, data, {
       header: {
         'content-type': 'application/x-www-form-urlencoded',

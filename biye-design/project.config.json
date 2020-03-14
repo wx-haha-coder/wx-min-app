@@ -5,7 +5,7 @@
 	},
 	"setting": {
 		"urlCheck": false,
-		"es6": true,
+		"es6": false,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
@@ -23,14 +23,14 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.2",
-	"appid": "wx0231c0fa917613b4",
+	"libVersion": "2.10.3",
 	"projectname": "%E5%96%9D%E9%85%92%E5%90%83%E8%82%89",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"appid": "wx0231c0fa917613b4",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -94,6 +94,13 @@
 					"id": -1,
 					"name": "登录",
 					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "付款页面",
+					"pathName": "pages/shop/pay/index",
 					"scene": null
 				}
 			]

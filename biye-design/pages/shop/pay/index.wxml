@@ -1,0 +1,79 @@
+<shop-item
+  id="{{shoId}}"
+  cover-url="{{coverUrl}}"
+  price="{{price}}"
+  number="{{number}}"
+  title="{{title}}"
+  totalPrice="{{totalPrice}}"
+  bind:reduce="handleReduce"
+  bind:add="handleAdd"
+/>
+<view class="cards-box">
+  <view class="card-item line-normal-bottom">
+    <text class="card-item-title">{{ isKind ? '收货人' : '姓名' }}</text>
+    <input
+      value="{{ name }}"
+      bindblur="updateName"
+      type="text"
+      placeholder="请填写收货人信息"
+      class="card-input"
+      placeholder-class="input-placeholder"
+    />
+  </view>
+
+  <view class="card-item line-normal-bottom">
+    <text class="card-item-title">联系电话</text>
+    <input
+      value="{{ telphone }}"
+      bindblur="updateTelphone"
+      maxlength="11"
+      type="number"
+      placeholder="请填写联系电话"
+      class="card-input"
+      placeholder-class="input-placeholder"
+    />
+  </view>
+  <view class="card-item-textarea line-normal-bottom">
+    <text class="card-item-title">收货地址</text>
+    <textarea
+      value="{{ addr }}"
+      maxlength="100"
+      auto-height="true"
+      bindfocus="addrFocus"
+      bindblur="addrBlur"
+      bindinput="updateAddr"
+      class="card-textarea"
+      placeholder-class="input-placeholder"
+      placeholder="记得写上收货地址"
+    />
+  </view>
+
+  <view class="card-item-textarea line-normal-bottom">
+    <text class="card-item-title">备注</text>
+    <textarea
+      maxlength="100"
+      auto-height="true"
+      bindfocus="remarkFocus"
+      bindblur="remarkBlur"
+      bindinput="updateTextArea"
+      class="card-textarea"
+      placeholder-class="input-placeholder"
+      placeholder="可以写一些要求啥的"
+    />
+  </view>
+</view>
+<!-- 底部按钮 -->
+<view class="footer-btn-group">
+  <view class="footer-left">
+    <view class="footer-price-msg">实付款：</view>
+    <view class="footer-price-unit primary-color">¥</view>
+    <view class="footer-price-num primary-color">{{ totalPrice }}</view>
+  </view>
+  <x-button
+    type="primary"
+    size="middle"
+    class="x-btn-class"
+    bindtap="submitOrder"
+    disabled="{{ canBuy ? '' : 'true' }}"
+  >提交</x-button>
+</view>

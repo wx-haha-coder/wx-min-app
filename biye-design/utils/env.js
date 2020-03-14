@@ -4,7 +4,7 @@ const getBaseUrl = (env) => {
   switch (env) {
     case 'dev':
       return {
-        apiBaseUrl: 'http://47.105.164.12'
+        apiBaseUrl: 'http://47.105.164.12/school/web/index.php?s=/api'
       }
     case 'prod':
       return {

@@ -1,4 +1,5 @@
-const { home } = require('../../api/index');
+const { home } = require("../../api/index");
+const App = getApp();
 
 Page({
   /**
@@ -7,56 +8,78 @@ Page({
   data: {
     showDots: true,
     bannerHeight: 380,
-    bannerList: [{
-      id: 1,
-      imgUrl: '../../assets/img/home/banner/banner-1.jpeg'
-    }, {
-      id: 2,
-      imgUrl: '../../assets/img/home/banner/banner-2.jpeg'
-    }, {
-      id: 3,
-      imgUrl: '../../assets/img/home/banner/banner-3.jpeg'
-    }],
+    bannerList: [
+      {
+        id: 1,
+        imgUrl: "../../assets/img/home/banner/banner-1.jpeg"
+      },
+      {
+        id: 2,
+        imgUrl: "../../assets/img/home/banner/banner-2.jpeg"
+      },
+      {
+        id: 3,
+        imgUrl: "../../assets/img/home/banner/banner-3.jpeg"
+      }
+    ],
 
-    shopList: [{
-      id: 1,
-      imgUrl: '../../assets/img/home/banner/banner-3.jpeg',
-      desc: '我是一件商品',
-    }],
+    shopList: [
+      {
+        id: 1,
+        imgUrl: "../../assets/img/home/banner/banner-3.jpeg",
+        desc: "我是一件商品"
+      }
+    ],
     listEnd: true,
-    page: 1,
+    page: 1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad (options) {
+  onLoad(options) {
     // this.getList(options);
   },
 
-  onReachBottom () {
+  onReachBottom() {
     const { page } = this.data;
     const param = { page: page + 1 };
     this.setData(param);
     this.getList(param);
   },
 
-  getList (param) {
+  getList(param) {
     home.getList(param).then(resp => {
       this.setData({
-        list: resp.data,
+        list: resp.data
       });
     });
   },
 
-  handleLike: (e) => {
+  handleLike: e => {
     const { id } = e.currentTarget.dataset;
   },
 
-  handleComment: (e) => {
+  handleComment: e => {
+    const isLogin = App.checkLogin();
     const { id } = e.currentTarget.dataset;
+    if (!isLogin) {
+      wx.navigateTo({
+        url:
+          "/pages/login/login?next=/" +
+          encodeURIComponent(`/pages/comment/index?id=${id}`)
+      });
+      return;
+    }
     wx.navigateTo({
-      url: `/pages/comment/index?id=${id}`,
+      url: `/pages/comment/index?id=${id}`
     });
   },
+
+  goDetail: e => {
+    const { id } = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: `/pages/shop/detail/index?id=${id}`
+    });
+  }
 });

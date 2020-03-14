@@ -1,0 +1,34 @@
+<wxs
+  src="./../../wxs/float-calc.wxs"
+  module="math"
+/>
+<view class="rect line-normal-all {{ isKind ? 'kind-box' : '' }}">
+  <image
+    class="rect-img"
+    src="{{coverUrl}}"
+    mode="aspectFill"
+    bindtap="goProduct"
+  />
+  <view class="rect-content">
+    <view class="rect-name text-hidden-2">{{title}}</view>
+    <view class="rect-number text-hidden-one">单价 : {{price}}元</view>
+    <view class="rect-calculate">
+      <image
+        class="calculate-icon"
+        src="{{ number <= 1 ? reduceDisabled : reduceIcon }}"
+        bindtap="reduce"
+      />
+      <text class="calculate-number">{{ number }}</text>
+      <image
+        class="calculate-icon"
+        src="{{ addIcon }}"
+        bindtap="add"
+      />
+    </view>
+    <view class="rect-total">
+      <text>合计</text>
+      <text class="unit">¥:</text>
+      <text class="total">{{totalPrice}}</text>
+    </view>
+  </view>
+</view>

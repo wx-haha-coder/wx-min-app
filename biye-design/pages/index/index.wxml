@@ -38,10 +38,13 @@
         class="product-img"
         src="{{item.imgUrl}}"
         mode="aspectFill"
+        data-id="{{item.id}}"
+        bind:tap="goDetail"
       />
       <view class="product-sub">
         <view class="product-title text-hidden">标题</view>
-        <view class="product-fns">
+        <view class="product-title text-hidden">￥：178</view>
+        <view class="product-fns" wx-if="{{false}}">
           <view
             class="product-fns-item"
             bind:tap="handleLike"

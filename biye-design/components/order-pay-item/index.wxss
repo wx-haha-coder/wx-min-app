@@ -1,0 +1,96 @@
+.rect {
+  position: relative;
+  margin: 44rpx 32rpx;
+  padding: 52rpx 0;
+  height: 304rpx;
+  box-sizing: border-box;
+  background: #fff;
+}
+.kind-box {
+  height: 400rpx;
+}
+.rect-img {
+  position: absolute;
+  top: 52rpx;
+  left: 0;
+  width: 200rpx;
+  height: 200rpx;
+  background: #F7F7F7;
+}
+.rect-content {
+  padding: 0 0 0 232rpx;
+}
+.rect-name {
+  font-size: 32rpx;
+  font-weight: 500;
+  line-height: 44rpx;
+  color: #484848;
+}
+.rect-number {
+  padding-top: 12rpx;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  font-weight: 500;
+  color: #B0A9A3;
+}
+.rect-price {
+  color: #FF8576;
+  font-size: 32rpx;
+  line-height: 38rpx;
+  position: absolute;
+  right: 0;
+  bottom: 52rpx;
+  text-align: right;
+  font-weight: 500;
+}
+
+.rect-total {
+  position: absolute;
+  right: 0;
+  bottom: 52rpx;
+  text-align: right;
+  font-weight: 500;
+  left: 240rpx;
+  line-height: 40rpx;
+}
+.rect-total text {
+  display: inline-block;
+  /* vertical-align: middle; */
+  color: #B0A9A3;
+  font-size: 28rpx;
+}
+.rect-total .unit {
+  color: #fc504e;
+  padding-left: 20rpx;
+}
+
+.rect-total .total {
+  color: #fc504e;
+  font-size: 36rpx;
+  padding-left: 20rpx;
+}
+
+.rect-calculate {
+  position: absolute;
+  right: 0;
+  bottom: 146rpx;
+  text-align: right;
+}
+.calculate-icon {
+  width: 48rpx;
+  height: 48rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+.calculate-number {
+  color: #635F5D;
+  font-size: 28rpx;
+  line-height: 48rpx;
+  font-weight: bold;
+  padding: 0 14rpx;
+  display: inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
+  min-width: 76rpx;
+  text-align: center;
+}
