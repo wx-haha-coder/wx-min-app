@@ -45,9 +45,11 @@
 }
 
 .product-price {
+  width: 200rpx;
   margin-right: 30rpx;
   overflow: hidden;
   color: #fc504e;
+  text-align: right;
 }
 
 .list-end-tip {

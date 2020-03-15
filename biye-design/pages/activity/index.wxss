@@ -50,7 +50,8 @@
 .activity-desc {
   padding-top: 18rpx;
   font-size: 24rpx;
-  color: #686868;
+  color: #918D89;
+  
 }
 
 .list-end-tip {
