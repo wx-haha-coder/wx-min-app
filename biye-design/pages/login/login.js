@@ -9,7 +9,7 @@ Page({
   onShow() {
     console.log(App.checkLogin());
     if (App.checkLogin()) {
-      this.navigateBack();
+      // this.navigateBack();
     }
   },
 
@@ -18,13 +18,10 @@ Page({
    */
   getUserInfo(e) {
     const that = this;
-    wx.getUserInfo({
-      success: function(res) {
-        const { userInfo } = res;
-        App.login(res, () => {
-          that.navigateBack();
-        });
-      }
+    App.getUserInfo(function(res) {
+      App.login(res, () => {
+        that.navigateBack();
+      });
     });
   },
 

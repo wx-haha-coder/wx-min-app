@@ -1,12 +1,15 @@
-const { get, post } = require('../utils/request');
+const { get, post } = require("../utils/request");
 
 module.exports = {
   /**
-   * 获取首页列表
+   * 茶点列表
+   * @params {string} wxapp_id
+   * @params {string} token
+   * @params {string} page
+   * @params {number} search
    */
-  getList: (params) => {
-    const { id } = params;
-    const path = `/user/event/${id}/address/`;
-    return get(path);
-  },
+  getTeaList: params => {
+    const path = "/api/goods/lists";
+    return post(path, params);
+  }
 };

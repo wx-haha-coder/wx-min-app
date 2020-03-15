@@ -75,5 +75,5 @@
     class="x-btn-class"
     bindtap="submitOrder"
     disabled="{{ canBuy ? '' : 'true' }}"
-  >提交</x-button>
+  >确认下单</x-button>
 </view>

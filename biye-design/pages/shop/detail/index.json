@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "x-button": "/components/button/button"
+    "x-button": "/components/button/button",
+    "product-fn": "/components/product-fn/index"
   }
 }

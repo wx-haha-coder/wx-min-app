@@ -94,7 +94,7 @@ button::after {
 
 .line-normal-bottom::after,
 .line-normal-all::after {
-  border-bottom: 1px solid rgb(243, 243, 243);
+  border-bottom: 1px solid #e2e2e2;
 }
 
 /*弹窗 start*/

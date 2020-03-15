@@ -47,17 +47,8 @@ Page({
   handleBuy: function (e) {
     const { id } = e.currentTarget.dataset;
     const { detail } = this.data;
-    wx.showModal({
-      title: `确认购买`,
-      content: `${detail.title}(￥${detail.price})`,
-      success (res) {
-        if (res.confirm) {
-          wx.showLoading({ mask: true });
-          submitOrder({ orderId: id }).then(resp => {
-            wx.hideLoading();
-          })
-        }
-      }
+    wx.navigateTo({
+      url: `/pages/shop/pay/index?shop_id=${id}`,
     })
   },
 })

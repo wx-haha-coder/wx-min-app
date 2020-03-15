@@ -8,7 +8,9 @@
     "pages/location/index",
     "pages/user/order/index",
     "pages/login/login",
-    "pages/shop/pay/index"
+    "pages/shop/pay/index",
+    "pages/activity/index",
+    "pages/user/message/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",
@@ -32,7 +34,7 @@
         "selectedColor": "#333"
       },
       {
-        "pagePath": "pages/shop/index",
+        "pagePath": "pages/activity/index",
         "text": "校园活动",
         "iconPath": "./assets/img/tab-bar/tab-shop.png",
         "selectedIconPath": "./assets/img/tab-bar/tab-shop-active.png",

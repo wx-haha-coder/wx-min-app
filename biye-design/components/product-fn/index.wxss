@@ -1,0 +1,19 @@
+.product-fns {
+  display: flex;
+  align-items: center;
+}
+
+.product-fns-item {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.product-fns-item+.product-fns-item {
+  margin-left: 40rpx;
+}
+
+.product-fns-item image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

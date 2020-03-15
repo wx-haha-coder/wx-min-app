@@ -31,51 +31,22 @@
 <view class="page product-list">
   <block
     wx:for="{{shopList}}"
-    wx:key="id"
+    wx:key="goods_id"
   >
     <view class="product-item">
       <image
         class="product-img"
-        src="{{item.imgUrl}}"
+        src="{{item.image[0].file_path}}"
         mode="aspectFill"
-        data-id="{{item.id}}"
+        data-id="{{item.goods_id}}"
         bind:tap="goDetail"
       />
       <view class="product-sub">
-        <view class="product-title text-hidden">标题</view>
-        <view class="product-title text-hidden">￥：178</view>
-        <view class="product-fns" wx-if="{{false}}">
-          <view
-            class="product-fns-item"
-            bind:tap="handleLike"
-            data-id="{{item.id}}"
-          >
-            <image
-              src="../../assets/img/common/like.png"
-              mode="widthFix"
-            />
-          </view>
-          <view
-            class="product-fns-item"
-            bind:bind:tap="handleCollect"
-            data-id="{{item.id}}"
-          >
-            <image
-              src="../../assets/img/common/collect.png"
-              mode="widthFix"
-            />
-          </view>
-          <view
-            class="product-fns-item"
-            bind:tap="handleComment"
-            data-id="{{item.id}}"
-          >
-            <image
-              src="../../assets/img/common/comment.png"
-              mode="widthFix"
-            />
-          </view>
+        <view class="product-title text-hidden">{{item.goods_name}}</view>
+        <view class="product-price text-hidden">
+          <text class="product-unit">￥:</text>{{item.goods_price}}
         </view>
+        <product-fn wx:if="{{false}}"/>
       </view>
     </view>
   </block>

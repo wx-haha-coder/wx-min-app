@@ -1,0 +1,28 @@
+<view hover-class="none" hover-stop-propagation="false">
+  <swiper class="banner-wrap" autoplay="{{false}}" indicator-dots="{{showDots}}" circular enable-back-to-top indicator-color="rgba(0,0,0,0.5)" indicator-active-color="#eee" style="height:{{bannerHeight}}rpx;">
+    <block wx:for="{{bannerList}}" wx:key="id">
+      <swiper-item>
+        <view class="swiper-item">
+          <image class="banner-img" src="{{item.imgUrl}}" mode="widthFix" />
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class="page product-list">
+  <block wx:for="{{shopList}}" wx:key="goods_id">
+    <view class="activity-item line-normal-bottom">
+      <image class="product-img" src="{{item.image[0].file_path}}" mode="aspectFill" data-id="{{item.goods_id}}" bind:tap="goDetail" />
+      <view class="activity-sub">
+        <view class="activity-title text-hidden">{{item.goods_name}}</view>
+        <view class="activity-desc">
+          活动介绍介绍
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+
+<view wx:if="{{listEnd}}" class="list-end-tip">
+  <no-more>我已经到底了</no-more>
+</view>

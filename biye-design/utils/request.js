@@ -1,7 +1,4 @@
-const {
-  env,
-  apiBaseUrl
-} = require('./env');
+const { env, apiBaseUrl } = require("./env");
 
 /**
  * request 封装
@@ -12,43 +9,47 @@ const {
  * @param {callback} resolve - 成功回调
  * @param {callback} reject - 失败回调
  */
-const request = (data, config, resolve, reject) => {
+const request = (data, config = {}, resolve, reject) => {
   const app = getApp();
   const token = app.globalData.jwt_token;
   const url = `${apiBaseUrl}${config.path}`;
-  const {
-    header,
-    ...reset
-  } = config.option;
+  const { header, ...reset } = config.option;
+
+  const defaultParams = {
+    wxapp_id: 10001,
+    token: wx.getStorageSync("token")
+  };
+
   wx.request({
     url,
-    method: config.method || 'GET',
+    method: config.method || "GET",
     header: {
-      Authorization: token ? `Bearer ${token}` : '',
-      ...header,
+      Authorization: token ? `Bearer ${token}` : "",
+      ...(header || {})
     },
     ...reset,
-    data: data || {},
-    success: (res) => resolve(res.data),
-    fail: (err) => reject(err),
+    data: { ...defaultParams, ...(data || {}) },
+    success: res => resolve(res.data),
+    fail: err => reject(err)
   });
 };
 
-const get = (path, params) => {
+const get = (path, params, option = {}) => {
   const config = {
-    method: 'GET',
+    method: "GET",
     path,
+    option: option || {}
   };
   return new Promise((resolve, reject) => {
     request(params, config, resolve, reject);
   });
 };
 
-const post = (path, params, option) => {
+const post = (path, params, option = {}) => {
   const config = {
-    method: 'POST',
+    method: "POST",
     path,
-    option,
+    option: option || {}
   };
   return new Promise((resolve, reject) => {
     request(params, config, resolve, reject);
@@ -57,5 +58,5 @@ const post = (path, params, option) => {
 
 module.exports = {
   get,
-  post,
+  post
 };

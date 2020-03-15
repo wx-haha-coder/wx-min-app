@@ -76,3 +76,9 @@
   width: 100%;
   letter-spacing: 2rpx;
 }
+
+.product-menu{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

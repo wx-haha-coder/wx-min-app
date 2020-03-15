@@ -1,0 +1,11 @@
+<view class="product-fns">
+  <view class="product-fns-item" bind:tap="handleLike" data-id="{{item.goods_id}}">
+    <image src="../../assets/img/common/like.png" mode="widthFix" />
+  </view>
+  <view class="product-fns-item" bind:bind:tap="handleCollect" data-id="{{item.goods_id}}">
+    <image src="../../assets/img/common/collect.png" mode="widthFix" />
+  </view>
+  <view class="product-fns-item" bind:tap="handleComment" data-id="{{item.goods_id}}">
+    <image src="../../assets/img/common/comment.png" mode="widthFix" />
+  </view>
+</view>

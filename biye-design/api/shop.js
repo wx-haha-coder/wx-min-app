@@ -9,9 +9,8 @@ module.exports = {
    * @params {number} goods_num
    */
   submitOrder: params => {
-    const { id } = params;
-    const path = "/order/buyNow";
-    return get(path);
+    const path = "/api/order/buyNow";
+    return get(path, params);
   },
   /**
    * 订单列表
@@ -26,19 +25,18 @@ module.exports = {
    */
   getCommentList: params => {
     const { id } = params;
-    const path = '';
+    const path = "";
     return post(path, params);
   },
   /**
-   * 差点列表
+   * 茶点列表
    * @params {string} wxapp_id
    * @params {string} token
    * @params {string} page
    * @params {number} search
    */
   getShopList: params => {
-    const { id } = params;
-    const path = "/goods/lists";
+    const path = "/api/goods/lists";
     return post(path, params);
   }
 };

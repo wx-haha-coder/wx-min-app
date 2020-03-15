@@ -13,14 +13,19 @@
     <view class="line-normal-bottom product-main">
       <view class="product-title">{{detail.title}}</view>
       <view class="product-sub-title">{{detail.subTitle}}</view>
-      <view class="product-price">
-        <image
-          src="../../../assets/img/common/rmp-active.png"
-          class="product-price-img"
-          mode="aspectFill"
-        />
-        <text class="product-price-num primary-color">{{detail.price}}</text>
-        <text class="product-price-unit">元</text>
+      <view class="product-menu">
+        <view class="product-price">
+          <image
+            src="../../../assets/img/common/rmp-active.png"
+            class="product-price-img"
+            mode="aspectFill"
+          />
+          <text class="product-price-num primary-color">{{detail.price}}</text>
+          <text class="product-price-unit">元</text>
+        </view>
+        <view class="product-btns">
+          <product-fn />
+        </view>
       </view>
     </view>
     <view class="product-desc">{{detail.desc}}</view>

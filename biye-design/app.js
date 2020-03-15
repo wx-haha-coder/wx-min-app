@@ -7,10 +7,11 @@ App({
    */
   globalData: {
     loginStatus: "",
-    apiToken: "",
+    token: "",
     systemInfo: "",
     loction: "",
-    isiPhoneX: false
+    isiPhoneX: false,
+    userInfo: null
   },
   onLaunch() {
     this.checkLogin();
@@ -62,6 +63,11 @@ App({
               wx.setStorageSync("user_id", resp.data.user_id);
               that.globalData.token = resp.data.token;
               that.globalData.user_id = resp.data.user_id;
+              that.globalData.userInfo = data.userInfo;
+
+              console.log(data);
+
+              console.log(that.globalData);
               if (back) {
                 back(resp.data);
               }
@@ -72,13 +78,26 @@ App({
               });
             }
           })
-          .catch(() => {
+          .catch(err => {
+            console.error(err);
             wx.hideLoading();
             wx.showToast({
               icon: "none",
               title: "网络异常"
             });
           });
+      }
+    });
+  },
+
+  getUserInfo(callback, fail) {
+    wx.getUserInfo({
+      lang: "zh_CN",
+      success: function(res) {
+        callback && callback(res);
+      },
+      fail: function() {
+        fail && fail();
       }
     });
   }

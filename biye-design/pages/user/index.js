@@ -1,33 +1,46 @@
-const app = getApp();
+const App = getApp();
 
 Page({
   data: {
-    userData: {
-      id: null,
-      name: '张大炮',
-      avatar: 'https://avatar-img.xindebaby.com/5bf7e2d06972a69f444cce7f22286dcc1583325501?imageMogr2/auto-orient',
-    },
-    code: '',
-    version: '',
+    userInfo: App.globalData.userInfo,
+    version: "",
+    token: "",
+    location: []
   },
 
-  onLoad () {
-    this.setData({
-      version: app.globalData.version,
-    });
+  onLoad() {
+    this.getUserData();
   },
 
-  // 登录
-  handleLogin () {
+  // 获取用户信息
+  getUserData() {
     const that = this;
-    console.log(app);
-    wx.login({
-      success (res) {
-        console.log('???', res);
+    if (App.checkLogin()) {
+      that.setData({
+        token: wx.getStorageSync("token")
+      });
+      App.getUserInfo(function(res) {
+        const { userInfo } = res;
+        console.log(userInfo);
         that.setData({
-          code: res.code,
+          userInfo,
+          location: [userInfo.province, userInfo.city].join(" / ")
         });
-      },
+      });
+    }
+  },
+  // 登录
+  handleLogin() {
+    wx.navigateTo({
+      url: "/pages/login/login?next=/pages/user/index"
     });
   },
+
+  // 跳转
+  handleGoLink(e) {
+    const { link } = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: link
+    });
+  }
 });

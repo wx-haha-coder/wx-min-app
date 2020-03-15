@@ -101,6 +101,20 @@
 					"id": -1,
 					"name": "付款页面",
 					"pathName": "pages/shop/pay/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的消息",
+					"pathName": "pages/user/message/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "校园活动",
+					"pathName": "pages/activity/index",
 					"scene": null
 				}
 			]
