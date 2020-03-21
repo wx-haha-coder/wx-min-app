@@ -36,11 +36,10 @@ Page({
   },
 
   onReachBottom() {
-    return;
-    const { page } = this.data;
-    const param = { page: page + 1 };
-    this.setData(param);
-    this.getList(param);
+    // const { page } = this.data;
+    // const param = { page: page + 1 };
+    // this.setData(param);
+    // this.getList(param);
   },
 
   getList(param) {

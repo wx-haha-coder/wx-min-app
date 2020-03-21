@@ -61,6 +61,7 @@
     <view
       class="user-menu-item line-normal-bottom"
       bind:tap="handleGoLink"
+      data-link="/pages/user/location/index"
     >
       <image
         class="user-menu-icon"

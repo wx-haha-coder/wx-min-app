@@ -1,5 +1,10 @@
-const { Multiply } = require("../../../utils/util.js");
-const { shop } = require("../../../api/index.js");
+const {
+  updateOrder
+} = require('../../../api/shop');
+
+const {
+  Multiply
+} = require("../../../utils/util.js");
 
 Page({
   /**
@@ -7,27 +12,36 @@ Page({
    */
   data: {
     goods_id: 10002,
+    order_id: '',
     title: "美味差点",
     price: 129.22,
-    coverUrl:
-      "https://content-img.xindebaby.com/3da666be804548f0896cf2cc93f3f28e_900_500.jpg?imageMogr2/auto-orient/thumbnail/!690x690r/|imageslim",
+    coverUrl: "https://content-img.xindebaby.com/3da666be804548f0896cf2cc93f3f28e_900_500.jpg?imageMogr2/auto-orient/thumbnail/!690x690r/|imageslim",
     number: 2,
     canBuy: true,
     totalPrice: 129.22
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-    const { number, price } = this.data;
+  onLoad: function(option) {
+    this.setData({
+      order_id: option.order_id,
+      number: option.number || 1
+    })
+  },
+  onShow: function(options) {
+    const {
+      number,
+      price
+    } = this.data;
     this.setData({
       totalPrice: Multiply(price, number + 1)
     })
   },
 
   handleReduce: function() {
-    const { price, number } = this.data;
+    const {
+      price,
+      number
+    } = this.data;
     if (number <= 1) {
       return;
     }
@@ -37,7 +51,10 @@ Page({
     });
   },
   handleAdd: function() {
-    const { price, number } = this.data;
+    const {
+      price,
+      number
+    } = this.data;
     this.setData({
       number: number + 1,
       totalPrice: Multiply(price, number + 1)
@@ -48,10 +65,13 @@ Page({
     wx.showLoading({
       mask: true
     });
-    const { goods_id, number } = this.data;
-    shop
-      .submitOrder({
-        goods_id,
+    const {
+      goods_id,
+      number,
+      order_id
+    } = this.data;
+    updateOrder({
+        order_id: order_id,
         goods_num: number
       })
       .then(resp => {
@@ -59,11 +79,11 @@ Page({
           wx.showToast({
             title: "下单成功"
           });
-          setTimeout(()=>{
+          setTimeout(() => {
             wx.navigateTo({
               url: '/pages/user/order/index?type=1',
             })
-          },100)
+          }, 100)
         }
       })
       .catch(() => {

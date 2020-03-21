@@ -24,7 +24,7 @@
           <text class="product-price-unit">元</text>
         </view>
         <view class="product-btns">
-          <product-fn />
+          <product-fn like-count="{{count}}" />
         </view>
       </view>
     </view>

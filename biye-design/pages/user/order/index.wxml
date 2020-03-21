@@ -1,7 +1,17 @@
 <view class="tab-list">
-  <scroll-view bindscroll="" class="tab-scroll-content">
-    <block wx:for="{{tabList}}" wx:key="id">
-      <view class="tab-item {{currentTab === item.id ? 'active' :'' }}" bind:tap="changeTab" data-id="{{item.id}}">
+  <scroll-view
+    bindscroll
+    class="tab-scroll-content"
+  >
+    <block
+      wx:for="{{tabList}}"
+      wx:key="id"
+    >
+      <view
+        class="tab-item {{currentTab === item.id ? 'active' :'' }}"
+        bind:tap="changeTab"
+        data-id="{{item.id}}"
+      >
         <view class="tab-item-label">{{item.label}}</view>
       </view>
     </block>
@@ -9,5 +19,18 @@
 </view>
 <!-- 订单列表 -->
 <view class="page order-list">
-  <order-item></order-item>
+  <block
+    wx:for="{{orderList}}"
+    key="order_id"
+  >
+    <order-item
+      class="x-order-item"
+      order="{{item}}"
+      goods="{{item.goods[0]}}"
+    ></order-item>
+  </block>
 </view>
+
+<block wx:if="{{end}}">
+  <no-more>已经到底了</no-more>
+</block>

@@ -53,3 +53,8 @@
 .order-list {
   margin-top: 30rpx;
 }
+
+.x-order-item {
+  display: block;
+  margin-bottom: 24rpx;
+}

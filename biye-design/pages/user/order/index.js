@@ -1,90 +1,96 @@
-const { getOrderList } = require('../../../api/shop');
+const { getOrderList } = require("../../../api/shop");
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    tabList: [{
-      id: 1,
-      label: '全部',
-    }, {
-      id: 2,
-      label: '已完成',
-    }, {
-      id: 3,
-      label: '待付款',
-    }],
+    tabList: [
+      {
+        id: 1,
+        label: "全部"
+      },
+      {
+        id: 2,
+        label: "已完成"
+      },
+      {
+        id: 3,
+        label: "待付款"
+      }
+    ],
     currentTab: 1,
+    orderList: [],
+    page: 1,
+    end: false
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad: function(options) {
+    this.setData({
+      currentTab: options.tab
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onReady: function() {
+    this.getOrderList();
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+  onShow: function() {},
 
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  onReachBottom: function() {
+    const { page, end } = this.data;
+    if (end) {
+      return;
+    }
+    this.getOrderList({ page: page + 1 });
   },
 
   getOrderList(param) {
-    getOrderList(param).then(resp => {
+    const { currentTab, page } = this.data;
+    let status = 0;
+    if (currentTab === 1) {
+      status = 0;
+    } else if (currentTab === 2) {
+      status = 20;
+    } else if (currentTab === 3) {
+      status = 10;
+    }
+    wx.showLoading({ mask: true });
 
-    });
+    console.log(param);
+    getOrderList({
+      page,
+      status,
+      ...param
+    })
+      .then(resp => {
+        wx.hideLoading();
+        if (resp.code === 1) {
+          const {
+            data: { list }
+          } = resp;
+          const { orderList } = this.data;
+          this.setData({
+            orderList:
+              list.current_page > 1 ? orderList.concat(list.data) : list.data,
+            page: list.current_page,
+            end: list.current_page === list.last_page
+          });
+        }
+      })
+      .catch(() => {
+        wx.hideLoading();
+        wx.showToast({
+          title: "网络错误"
+        });
+      });
   },
 
   changeTab(e) {
     const { id } = e.currentTarget.dataset;
     this.setData({
       currentTab: id,
+      orderList: []
     });
-    this.getOrderList({ id });
-  },
+    this.getOrderList();
+  }
 });

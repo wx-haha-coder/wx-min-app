@@ -7,10 +7,15 @@ Component({
     styleIsolation: 'apply-shared',
     addGlobalClass: true,
   },
+  externalClasses: ['x-order-item'],
   properties: {
     order: {
       type: Object,
-      value: null,
+      value: {},
+    },
+    goods: {
+      type: Object,
+      value: {},
     }
   },
 

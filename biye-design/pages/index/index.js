@@ -36,8 +36,10 @@ Page({
   },
 
   onReachBottom() {
-    return;
-    const { page } = this.data;
+    const { page, listEnd } = this.data;
+    if (listEnd) {
+      return;
+    }
     const param = { page: page + 1 };
     this.setData(param);
     this.getList(param);
@@ -46,14 +48,21 @@ Page({
   getList(param) {
     home.getTeaList({ ...param, search: "" }).then(resp => {
       if (resp.code === 1) {
+        const {
+          data: { list }
+        } = resp;
+        const { shopList } = this.data;
         this.setData({
-          shopList: resp.data.list.data,
-          page: resp.data.list.current_page
+          shopList:
+            list.current_page > 1 ? shopList.concat(list.data) : list.data,
+          page: resp.data.list.current_page,
+          listEnd: list.current_page === list.last_page
         });
       }
     });
   },
-
+  
+  // 点赞
   handleLike: e => {
     const { id } = e.currentTarget.dataset;
   },
