@@ -4,12 +4,14 @@
       class="comment-input"
       auto-height
       placeholder="填写评价内容"
+      bind:input="handleInput"
     />
     <view class="comment-btn">
       <x-button
         size="small"
         type="primary"
         class="x-btn-class"
+        bind:tap="handleComment"
       >提交</x-button>
     </view>
   </view>

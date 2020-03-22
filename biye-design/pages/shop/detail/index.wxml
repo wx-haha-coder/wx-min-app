@@ -2,16 +2,16 @@
   wx:if="{{!pageLoading}}"
   class="page-cont"
 >
-  <view class="main {{ isiPhoneX ? 'main-for-x' : '' }}">
+  <view class="main">
     <image
-      src="{{detail.img_url}}"
+      src="{{detail.image[0].file_path}}"
       class="banner-img"
       mode="aspectFill"
     />
   </view>
   <view class="page product-content">
     <view class="line-normal-bottom product-main">
-      <view class="product-title">{{detail.title}}</view>
+      <view class="product-title">{{detail.goods_name}}</view>
       <view class="product-sub-title">{{detail.subTitle}}</view>
       <view class="product-menu">
         <view class="product-price">
@@ -20,15 +20,28 @@
             class="product-price-img"
             mode="aspectFill"
           />
-          <text class="product-price-num primary-color">{{detail.price}}</text>
+          <text class="product-price-num primary-color">{{detail.goods_price}}</text>
           <text class="product-price-unit">元</text>
         </view>
         <view class="product-btns">
-          <product-fn like-count="{{count}}" />
+          <product-fn
+            like-count="{{likeNum}}"
+            is-like="{{likeStatus}}"
+            is-collect="{{collectStatus}}"
+            bind:onLike="handleLike"
+            bind:onCollect="handleCollect"
+            bind:onComment="handleComment"
+          />
         </view>
       </view>
     </view>
-    <view class="product-desc">{{detail.desc}}</view>
+
+    <view class="product-desc">
+      <rich-text
+        class="product-desc"
+        nodes="{{detail.content}}"
+      ></rich-text>
+    </view>
 
     <view class="fix-end bottom-btns">
       <x-button

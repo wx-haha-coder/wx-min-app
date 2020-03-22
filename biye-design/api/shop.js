@@ -1,7 +1,4 @@
-const {
-  get,
-  post
-} = require("../utils/request");
+const { get, post } = require("../utils/request");
 
 module.exports = {
   /**
@@ -19,16 +16,14 @@ module.exports = {
    * 订单列表
    */
   getOrderList: params => {
-    const path = '/api/order/getOrderList';
+    const path = "/api/order/getOrderList";
     return get(path, params);
   },
   /**
    * 获取评论列表
    */
   getCommentList: params => {
-    const {
-      id
-    } = params;
+    const { id } = params;
     const path = "";
     return post(path, params);
   },
@@ -43,28 +38,85 @@ module.exports = {
     const path = "/api/goods/lists";
     return post(path, params);
   },
+
+  /**
+   * 点赞
+   * @params {string} wxapp_id
+   * @params {string} token
+   * @params {string} goods_id
+   * @params {number} status , 状态 1-已赞 0-取消
+   */
+  postLike: params => {
+    const path = "/api/admire/addAdmire";
+    return get(path, params);
+  },
+
   /**
    * 获取点赞数
    * @params {string} wxapp_id
    * @params {string} token
    * @params {string} goods_id 商品id
    */
-  // /api/admire/getAdmire&wxapp_id=10001&token=&goods_id=XXX
   getAdmireCount: params => {
     const path = "/api/admire/getAdmire";
     return post(path, params);
   },
 
-  // 
+  /**
+   * 获取收藏数
+   * @params {string} wxapp_id
+   * @params {string} token
+   * @params {string} goods_id 商品id
+   */
+  getCollectCount: params => {
+    const path = "/api/collect/getCollect";
+    return get(path, params);
+  },
+
+  /**
+   * 收藏
+   * @params {string} wxapp_id
+   * @params {string} token
+   * @params {string} goods_id 商品id
+   * @params {number} status , 状态 1-已赞 0-取消
+   */
+  postCollect: params => {
+    const path = "/api/collect/addCollect";
+    return get(path, params);
+  },
+
   /**
    * 修改状态（支付）
    * @params {string} wxapp_id
    * @params {string} token
    * @params {string} order_id 订单ID
    */
-  // /api/order/updateOrderStatus&order_id=10002&wxapp_id=10001&token=
   updateOrder: params => {
     const path = "/api/order/updateOrderStatus";
     return post(path, params);
   },
+
+  /**
+   * 修改状态（支付）
+   * @params {string} wxapp_id
+   * @params {string} token
+   * @params {string} goods_id 商品ID
+   */
+  getGoodDetail: params => {
+    const path = "/api/goods/detail";
+    return get(path, params);
+  },
+
+  //
+  /**
+   * 评论
+   * @params {string} wxapp_id
+   * @params {string} token
+   * @params {string} goods_id 商品ID
+   * @params {string} comment 评论内容
+   */
+  postComment: params => {
+    const path = "/api/comment/addComment";
+    return post(path, params);
+  }
 };

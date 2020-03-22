@@ -17,10 +17,17 @@ App({
     this.checkLogin();
     this.initData();
   },
-  checkLogin() {
-    return (
-      wx.getStorageSync("token") != "" && wx.getStorageSync("user_id") != ""
-    );
+  checkLogin(goLogin) {
+    const token = wx.getStorageSync("token");
+    const userId = wx.getStorageSync("user_id");
+    const isLogin = token && userId;
+    if (isLogin) {
+      return isLogin;
+    }
+    if (goLogin) {
+      this.goLoginPage();
+    }
+    return !!isLogin;
   },
   initData() {
     const version = wx.getSystemInfoSync().SDKVersion;
@@ -99,6 +106,20 @@ App({
       fail: function() {
         fail && fail();
       }
+    });
+  },
+
+  goLoginPage: function(path) {
+    let toPath = path;
+    if (!path) {
+      let pages = getCurrentPages();
+      let currPage = null;
+      if (pages.length) {
+        toPath = pages[pages.length - 1];
+      }
+    }
+    wx.navigateTo({
+      url: "/pages/login/login?next=/" + toPath
     });
   }
 });

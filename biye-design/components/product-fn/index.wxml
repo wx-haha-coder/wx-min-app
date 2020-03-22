@@ -6,7 +6,13 @@
   >
     <view class="product-fns-icon">
       <image
+        wx:if="{{!isLike}}"
         src="../../assets/img/common/like.png"
+        mode="widthFix"
+      />
+      <image
+        wx:else
+        src="../../assets/img/common/like-active.png"
         mode="widthFix"
       />
     </view>
@@ -14,15 +20,22 @@
   </view>
   <view
     class="product-fns-item"
-    bind:bind:tap="handleCollect"
+    bind:tap="handleCollect"
     data-id="{{item.goods_id}}"
   >
     <view class="product-fns-icon">
       <image
+        wx:if="{{!isCollect}}"
         src="../../assets/img/common/collect.png"
         mode="widthFix"
       />
+      <image
+        wx:else
+        src="../../assets/img/common/collect-active.png"
+        mode="widthFix"
+      />
     </view>
+    <text class="like-count">{{collectCount}}</text>
   </view>
   <view
     class="product-fns-item"

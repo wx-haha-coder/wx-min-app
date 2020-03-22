@@ -1,5 +1,13 @@
-const { submitOrder, getAdmireCount } = require("../../../api/shop");
-const app = getApp();
+const {
+  submitOrder,
+  getAdmireCount,
+  getGoodDetail,
+  postLike,
+  getCollectCount,
+  postCollect
+} = require("../../../api/shop");
+
+const App = getApp();
 
 Page({
   /**
@@ -8,7 +16,10 @@ Page({
   data: {
     detail: {},
     id: "",
-    count: 0
+    likeNum: 0,
+    likeStatus: false,
+    collectNum: 0,
+    collectStatus: false
   },
 
   /**
@@ -20,26 +31,12 @@ Page({
     });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {},
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function() {
-    getAdmireCount({
-      goods_id: this.data.id
-    }).then(resp => {
-      console.log(resp);
-      if (resp.code === 1) {
-        this.setData({
-          count: resp.data.count
-        });
-      }
-    });
+    this.getDetail();
+    this.getLikeCount();
+    this.getCollectCount();
   },
+
   handleBuy: function(e) {
     const { detail, id } = this.data;
     wx.showLoading({
@@ -65,5 +62,78 @@ Page({
       .catch(() => {
         wx.hideLoading();
       });
+  },
+
+  getDetail: function() {
+    const { id } = this.data;
+    getGoodDetail({
+      goods_id: id
+    }).then(resp => {
+      if (resp.code === 1) {
+        this.setData({
+          detail: resp.data.detail
+        });
+      }
+    });
+  },
+
+  handleLike: function() {
+    const isLogin = App.checkLogin(true);
+    const { id } = this.data;
+    if (isLogin) {
+      postLike({
+        goods_id: id,
+        status: 1
+      }).then(resp => {
+        if (resp.code === 1) {
+          this.setData({
+            likeStatus: 1,
+            likeNum: this.data.likeNum + 1
+          });
+        }
+      });
+    }
+  },
+
+  handleCollect: function() {
+    const isLogin = App.checkLogin(true);
+    const { id } = this.data;
+    if (isLogin) {
+      postCollect({
+        goods_id: id,
+        status: 1
+      }).then(resp => {
+        if (resp.code === 1) {
+          this.setData({
+            collectStatus: true,
+            collectNum: this.data.collectNum + 1
+          });
+        }
+      });
+    }
+  },
+
+  getCollectCount: function() {
+    getCollectCount({
+      goods_id: this.data.id
+    }).then(resp => {
+      if (resp.code === 1) {
+        this.setData({
+          collectNum: resp.data.count
+        });
+      }
+    });
+  },
+
+  getLikeCount: function() {
+    getAdmireCount({
+      goods_id: this.data.id
+    }).then(resp => {
+      if (resp.code === 1) {
+        this.setData({
+          likeNum: resp.data.count
+        });
+      }
+    });
   }
 });
