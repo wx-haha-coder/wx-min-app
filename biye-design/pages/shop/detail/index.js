@@ -86,36 +86,34 @@ Page({
   },
   handleLike: function() {
     const isLogin = App.checkLogin(true);
-    const { id } = this.data;
+    const { id, likeStatus } = this.data;
     if (isLogin) {
       postLike({
         goods_id: id,
-        status: 1
+        status: likeStatus ? 0 : 1
       }).then(resp => {
         if (resp.code === 1) {
           this.setData({
             likeStatus: !this.data.likeStatus,
-            likeNum: this.data.likeNum + 1
           });
-          this.getAdmireInfo();
+          this.getLikeCount();
         }
       });
     }
   },
   handleCollect: function() {
     const isLogin = App.checkLogin(true);
-    const { id } = this.data;
+    const { id, collectStatus } = this.data;
     if (isLogin) {
       postCollect({
         goods_id: id,
-        status: 1
+        status: collectStatus ? 0 : 1
       }).then(resp => {
         if (resp.code === 1) {
           this.setData({
             collectStatus: !this.data.collectStatus,
-            collectNum: this.data.collectNum + 1
           });
-          this.getCollectInfo();
+          this.getCollectCount();
         }
       });
     }

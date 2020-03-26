@@ -1,4 +1,5 @@
-const { home } = require("../../api/index");
+const { home } = require('../../api/index');
+
 const App = getApp();
 
 Page({
@@ -11,21 +12,21 @@ Page({
     bannerList: [
       {
         id: 1,
-        imgUrl: "../../assets/img/home/banner/banner-1.jpeg"
+        imgUrl: '../../assets/img/home/banner/banner-1.jpeg',
       },
       {
         id: 2,
-        imgUrl: "../../assets/img/home/banner/banner-2.jpeg"
+        imgUrl: '../../assets/img/home/banner/banner-2.jpeg',
       },
       {
         id: 3,
-        imgUrl: "../../assets/img/home/banner/banner-3.jpeg"
-      }
+        imgUrl: '../../assets/img/home/banner/banner-3.jpeg',
+      },
     ],
 
     shopList: [],
     listEnd: false,
-    page: 1
+    page: 1,
   },
 
   /**
@@ -46,22 +47,21 @@ Page({
   },
 
   getList(param) {
-    home.getTeaList({ ...param, search: "" }).then(resp => {
+    home.getTeaList({ ...param, search: '' }).then(resp => {
       if (resp.code === 1) {
         const {
-          data: { list }
+          data: { list },
         } = resp;
         const { shopList } = this.data;
         this.setData({
-          shopList:
-            list.current_page > 1 ? shopList.concat(list.data) : list.data,
+          shopList: list.current_page > 1 ? shopList.concat(list.data) : list.data,
           page: resp.data.list.current_page,
-          listEnd: list.current_page === list.last_page
+          listEnd: list.current_page === list.last_page,
         });
       }
     });
   },
-  
+
   // 点赞
   handleLike: e => {
     const { id } = e.currentTarget.dataset;
@@ -72,21 +72,19 @@ Page({
     const { id } = e.currentTarget.dataset;
     if (!isLogin) {
       wx.navigateTo({
-        url:
-          "/pages/login/login?next=/" +
-          encodeURIComponent(`/pages/comment/index?id=${id}`)
+        url: '/pages/login/login?next=/' + encodeURIComponent(`/pages/comment/index?id=${id}`),
       });
       return;
     }
     wx.navigateTo({
-      url: `/pages/comment/index?id=${id}`
+      url: `/pages/comment/index?id=${id}`,
     });
   },
 
   goDetail: e => {
     const { id } = e.currentTarget.dataset;
     wx.navigateTo({
-      url: `/pages/shop/detail/index?id=${id}`
+      url: `/pages/shop/detail/index?id=${id}`,
     });
-  }
+  },
 });

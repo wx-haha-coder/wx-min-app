@@ -16,7 +16,10 @@
         mode="widthFix"
       />
     </view>
-    <text class="like-count">{{likeCount}}</text>
+    <text
+      class="like-count"
+      wx:if="{{likeCount>0}}"
+    >{{likeCount}}</text>
   </view>
   <view
     class="product-fns-item"
