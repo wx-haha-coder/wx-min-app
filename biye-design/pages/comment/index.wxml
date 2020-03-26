@@ -26,6 +26,13 @@
   </view>
 
   <view
+    wx:if="{{!commentList.length}}"
+    class="list-end-tip"
+  >
+    <no-more>暂无评论内容</no-more>
+  </view>
+
+  <view
     wx:if="{{listEnd}}"
     class="list-end-tip"
   >

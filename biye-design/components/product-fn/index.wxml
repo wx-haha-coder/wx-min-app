@@ -35,7 +35,10 @@
         mode="widthFix"
       />
     </view>
-    <text class="like-count">{{collectCount}}</text>
+    <text
+      class="like-count"
+      wx:if="{{collectCount>0}}"
+    >{{collectCount}}</text>
   </view>
   <view
     class="product-fns-item"
@@ -48,5 +51,9 @@
         mode="widthFix"
       />
     </view>
+    <text
+      class="like-count"
+      wx:if="{{commentCount>0}}"
+    >{{commentCount}}</text>
   </view>
 </view>

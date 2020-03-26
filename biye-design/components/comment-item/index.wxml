@@ -1,16 +1,16 @@
 <view class="comment-box" wx:if="{{comment}}">
   <view class="comment-userinfo">
     <image
-      src="{{comment.user_avatar}}"
+      src="{{comment.user.avatarUrl}}"
       class="comment-user-avatar"
       mode="aspectFill"
     />
     <view class="comment-user">
-      <view class="comment-user-name">{{comment.user_name}}</view>
-      <view class="comment-user-time">{{comment.comment_time}}</view>
+      <view class="comment-user-name">{{comment.user.nickName}}</view>
+      <view class="comment-user-time">{{comment.create_time}}</view>
     </view>
   </view>
   <view class="comment-word">
-    {{comment.comment_word}}
+    {{comment.comment}}
   </view>
 </view>

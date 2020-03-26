@@ -56,7 +56,6 @@ Page({
     }
     wx.showLoading({ mask: true });
 
-    console.log(param);
     getOrderList({
       page,
       status,

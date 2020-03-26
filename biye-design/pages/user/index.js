@@ -21,7 +21,6 @@ Page({
       });
       App.getUserInfo(function(res) {
         const { userInfo } = res;
-        console.log(userInfo);
         that.setData({
           userInfo,
           location: [userInfo.province, userInfo.city].join(" / ")

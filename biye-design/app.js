@@ -71,17 +71,13 @@ App({
               that.globalData.token = resp.data.token;
               that.globalData.user_id = resp.data.user_id;
               that.globalData.userInfo = data.userInfo;
-
-              console.log(data);
-
-              console.log(that.globalData);
               if (back) {
                 back(resp.data);
               }
             } else {
               wx.showToast({
                 icon: "none",
-                title: resp.msg
+                title: resp.msg,
               });
             }
           })

@@ -8,7 +8,7 @@
   bind:reduce="handleReduce"
   bind:add="handleAdd"
 />
-<view class="cards-box">
+<view class="cards-box" wx:if="{{false}}">
   <view class="card-item line-normal-bottom">
     <text class="card-item-title">{{ isKind ? '收货人' : '姓名' }}</text>
     <input

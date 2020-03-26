@@ -63,10 +63,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "评论列表",
 					"pathName": "pages/comment/index",
-					"query": "id=1",
+					"query": "id=10004",
 					"scene": null
 				},
 				{

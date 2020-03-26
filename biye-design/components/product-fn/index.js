@@ -6,20 +6,24 @@ Component({
   properties: {
     likeCount: {
       type: Number,
-      value: 0
+      value: 0,
     },
     collectCount: {
       type: Number,
-      value: 0
+      value: 0,
+    },
+    commentCount: {
+      type: Number,
+      value: 0,
     },
     isLike: {
       type: Boolean,
-      value: false
+      value: false,
     },
     isCollect: {
       type: Boolean,
-      value: false
-    }
+      value: false,
+    },
   },
 
   /**

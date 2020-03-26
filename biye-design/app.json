@@ -3,11 +3,11 @@
     "pages/index/index",
     "pages/shop/index",
     "pages/user/index",
-    "pages/shop/detail/index",
     "pages/comment/index",
-    "pages/user/order/index",
     "pages/login/login",
+    "pages/user/order/index",
     "pages/shop/pay/index",
+    "pages/shop/detail/index",
     "pages/activity/index",
     "pages/user/message/index",
     "pages/user/location/index"

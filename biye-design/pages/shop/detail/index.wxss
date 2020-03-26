@@ -1,4 +1,3 @@
-/* pages/shop/detail/index.wxss */
 .banner-img {
   width: 100%;
   height: 460rpx;

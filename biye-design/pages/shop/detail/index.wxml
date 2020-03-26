@@ -26,6 +26,8 @@
         <view class="product-btns">
           <product-fn
             like-count="{{likeNum}}"
+            collect-count="{{collectNum}}"
+            comment-count="{{commentNum}}"
             is-like="{{likeStatus}}"
             is-collect="{{collectStatus}}"
             bind:onLike="handleLike"

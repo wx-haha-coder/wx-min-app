@@ -1,27 +1,20 @@
 const { getCommentList, postComment } = require("../../api/shop");
+const { getDateDiff } = require("../../utils/util");
 
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    commentList: [
-      {
-        user_name: "张议案",
-        user_avatar:
-          "https://avatar-img.xindebaby.com/425532248a38ed46e0bad450d8a9982f1581297642.37?imageMogr2/auto-orient",
-        comment_time: "2019-01-23 22:10",
-        comment_word: "大萨达撒绝对是卡大家快来撒娇打开了撒娇的考虑撒娇"
-      }
-    ],
-    productId: "",
-    page: 1,
-    listEnd: true
+    commentList: [],
+    id: "",
+    page: 0,
+    listEnd: false
   },
 
   onLoad(options) {
     this.setData({
-      productId: options.id
+      id: options.id
     });
   },
 
@@ -41,51 +34,63 @@ Page({
   },
   // 获取评论记录
   getComments() {
-    const { productId, commentList } = this.data;
+    const { id, commentList, page } = this.data;
     getCommentList({
-      productId
+      goods_id: id,
+      page: page + 1
     }).then(resp => {
-      if (resp.status === 0) {
+      if (resp.code === 1) {
+        const currPgae = resp.data.current_page;
+        const lastPage = resp.data.last_page;
+        commentList.unshift(...this.dateFilter(resp.data.data));
         this.setData({
-          commentList: commentList.concat(...resp.data),
-          listEnd: resp.data.listEnd
+          commentList,
+          listEnd: currPgae === lastPage && commentList.length > 0,
+          page: resp.data.current_page
         });
       }
     });
   },
-
-  handleInput: function(e) {
+  handleInput(e) {
     this.data.comment = e.detail.value;
   },
-
   // 评论
-  handleComment: function() {
-    const { productId, commentList, comment } = this.data;
+  handleComment() {
+    const { id, comment } = this.data;
     wx.showLoading({ mask: true });
     postComment({
-      goods_id: productId,
-      comment
+      goods_id: id,
+      comment,
     })
       .then(resp => {
         wx.hideLoading();
         if (resp.code === 1) {
-          this.getCommentList();
+          this.getComments();
           this.setData({
-            comment: ""
+            comment: '',
           });
         } else {
           wx.showToast({
-            title: resp.msg || "未知错误",
-            icon: "none"
+            title: resp.msg || '未知错误',
+            icon: 'none',
           });
         }
       })
-      .catch(() => {
-        wx.hodeLoading();
+      .catch((err) => {
+        console.log(err);
+        wx.hideLoading();
         wx.showToast({
-          title: "网络错误",
-          icon: "none"
+          title: '网络错误',
+          icon: 'none',
         });
       });
-  }
+  },
+  dateFilter(data) {
+    return data.map(ele => (
+      {
+        ...ele,
+        create_time: getDateDiff(getDateDiff * 1000),
+      }
+    ));
+  },
 });

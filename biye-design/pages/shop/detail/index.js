@@ -1,3 +1,4 @@
+/*eslint-disable*/
 const {
   submitOrder,
   getAdmireCount,
@@ -6,7 +7,8 @@ const {
   getCollectCount,
   postCollect,
   getAdmireInfo,
-  getCollectInfo
+  getCollectInfo,
+  getCommentCount
 } = require("../../../api/shop");
 
 const App = getApp();
@@ -21,7 +23,8 @@ Page({
     likeNum: 0,
     likeStatus: false,
     collectNum: 0,
-    collectStatus: false
+    collectStatus: false,
+    commentNum: 0
   },
 
   /**
@@ -37,10 +40,13 @@ Page({
     this.getDetail();
     this.getLikeCount();
     this.getCollectCount();
+    this.getCommentCount();
+    this.getAdmireInfo();
+    this.getCollectInfo();
   },
 
   handleBuy: function(e) {
-    const { detail, id } = this.data;
+    const { id } = this.data;
     wx.showLoading({
       title: ""
     });
@@ -51,8 +57,9 @@ Page({
       .then(resp => {
         wx.hideLoading();
         if (resp.code === 1) {
+          const id = this.data.id;
           wx.navigateTo({
-            url: `/pages/shop/pay/index?order_id=${resp.data.insert_id}`
+            url: `/pages/shop/pay/index?order_id=${resp.data.insert_id}&goods_id=${id}`
           });
         } else {
           wx.showToast({
@@ -65,7 +72,6 @@ Page({
         wx.hideLoading();
       });
   },
-
   getDetail: function() {
     const { id } = this.data;
     getGoodDetail({
@@ -78,7 +84,6 @@ Page({
       }
     });
   },
-
   handleLike: function() {
     const isLogin = App.checkLogin(true);
     const { id } = this.data;
@@ -89,14 +94,14 @@ Page({
       }).then(resp => {
         if (resp.code === 1) {
           this.setData({
-            likeStatus: 1,
+            likeStatus: !this.data.likeStatus,
             likeNum: this.data.likeNum + 1
           });
+          this.getAdmireInfo();
         }
       });
     }
   },
-
   handleCollect: function() {
     const isLogin = App.checkLogin(true);
     const { id } = this.data;
@@ -107,14 +112,14 @@ Page({
       }).then(resp => {
         if (resp.code === 1) {
           this.setData({
-            collectStatus: true,
+            collectStatus: !this.data.collectStatus,
             collectNum: this.data.collectNum + 1
           });
+          this.getCollectInfo();
         }
       });
     }
   },
-
   getCollectCount: function() {
     getCollectCount({
       goods_id: this.data.id
@@ -126,7 +131,6 @@ Page({
       }
     });
   },
-
   getLikeCount: function() {
     getAdmireCount({
       goods_id: this.data.id
@@ -137,5 +141,49 @@ Page({
         });
       }
     });
+  },
+  getCommentCount: function() {
+    getCommentCount({
+      goods_id: this.data.id
+    }).then(resp => {
+      if (resp.code === 1) {
+        this.setData({
+          commentNum: resp.data.count
+        });
+      }
+    });
+  },
+  getAdmireInfo: function() {
+    getAdmireInfo({
+      goods_id: this.data.id
+    }).then(resp => {
+      if (resp.code === 1) {
+        this.setData({
+          likeStatus: resp.data.status.value === 1
+        });
+      }
+    });
+  },
+
+  getCollectInfo: function() {
+    getCollectInfo({
+      goods_id: this.data.id
+    }).then(resp => {
+      if (resp.code === 1) {
+        this.setData({
+          collectStatus: resp.data.status.value === 1
+        });
+      }
+    });
+  },
+
+  handleComment() {
+    const { id } = this.data;
+    const isLogin = App.checkLogin(true);
+    if (isLogin) {
+      wx.navigateTo({
+        url: `/pages/comment/index?id=${id}`
+      });
+    }
   }
 });

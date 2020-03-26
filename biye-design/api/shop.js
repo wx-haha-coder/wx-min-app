@@ -23,8 +23,7 @@ module.exports = {
    * 获取评论列表
    */
   getCommentList: params => {
-    const { id } = params;
-    const path = "";
+    const path = "/api/comment/getCommentList";
     return post(path, params);
   },
   /**
