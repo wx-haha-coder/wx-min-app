@@ -74,6 +74,17 @@ module.exports = {
   },
 
   /**
+   * 获取评论数
+   * @params {string} wxapp_id
+   * @params {string} token
+   * @params {string} goods_id 商品id
+   */
+  getCommentCount: params => {
+    const path = "/api/comment/getComment";
+    return post(path, params);
+  },
+
+  /**
    * 收藏
    * @params {string} wxapp_id
    * @params {string} token
@@ -107,7 +118,6 @@ module.exports = {
     return get(path, params);
   },
 
-  //
   /**
    * 评论
    * @params {string} wxapp_id
@@ -118,5 +128,39 @@ module.exports = {
   postComment: params => {
     const path = "/api/comment/addComment";
     return post(path, params);
-  }
+  },
+
+  /**
+   * 评论列表
+   * @params {string} wxapp_id
+   * @params {string} token
+   * @params {string} goods_id 商品ID
+   * @params {number} page 页码
+   */
+  getComments: params => {
+    const path = "/api/comment/getCommentList";
+    return post(path, params);
+  },
+
+  /**
+   * 点赞状态
+   * @params {string} wxapp_id
+   * @params {string} token
+   * @params {string} goods_id 商品ID
+   */
+  getAdmireInfo: params => {
+    const path = "/api/admire/getAdmireInfo";
+    return get(path, params);
+  },
+
+  /**
+   * 收藏状态
+   * @params {string} wxapp_id
+   * @params {string} token
+   * @params {string} goods_id 商品ID
+   */
+  getCollectInfo: params => {
+    const path = "/api/collect/getCollectInfo";
+    return post(path, params);
+  },
 };

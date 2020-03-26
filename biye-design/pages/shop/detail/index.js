@@ -4,7 +4,9 @@ const {
   getGoodDetail,
   postLike,
   getCollectCount,
-  postCollect
+  postCollect,
+  getAdmireInfo,
+  getCollectInfo
 } = require("../../../api/shop");
 
 const App = getApp();
