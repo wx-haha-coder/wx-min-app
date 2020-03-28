@@ -56,7 +56,7 @@ Page({
     wx.showLoading({
       mask: true,
     });
-    const { goods_id, number, order_id } = this.data;
+    const { number, order_id } = this.data;
     updateOrder({
       order_id: order_id,
       goods_num: number,
@@ -94,7 +94,7 @@ Page({
           title: detail.goods_name,
           price: detail.goods_price,
           coverUrl: detail.image[0].file_path,
-          number: 1,
+          number: this.data.number,
           canBuy: detail.goods_status.value === 10,
           totalPrice: Multiply(detail.goods_price, this.data.number),
         });

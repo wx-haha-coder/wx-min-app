@@ -90,7 +90,7 @@ Page({
   dateFilter(data) {
     return data.map(ele => ({
       ...ele,
-      create_time: getDateDiff(getDateDiff * 1000),
+      create_time: getDateDiff(ele.create_time * 1000),
     }));
   },
 });

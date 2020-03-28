@@ -66,7 +66,7 @@
 					"id": 1,
 					"name": "评论列表",
 					"pathName": "pages/comment/index",
-					"query": "id=10004",
+					"query": "id=10005",
 					"scene": null
 				},
 				{

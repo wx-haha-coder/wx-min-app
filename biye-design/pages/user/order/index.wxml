@@ -21,7 +21,7 @@
 <view class="page order-list">
   <block
     wx:for="{{orderList}}"
-    key="order_id"
+    wx:key="order_id"
   >
     <order-item
       class="x-order-item"

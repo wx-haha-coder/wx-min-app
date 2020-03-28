@@ -65,41 +65,36 @@ function Division(arg1, arg2) {
   }
 }
 
-function getDateDiff(dateTime) {
-  let dateTimeStamp = new Date(dateTime).getTime();
-  let result = '';
-  let minute = 1000 * 60;
-  let hour = minute * 60;
-  let day = hour * 24;
-  let halfamonth = day * 15;
-  let month = day * 30;
-  let year = day * 365;
-  let now = new Date().getTime();
-  let diffValue = now - dateTimeStamp;
+function getDateDiff(dateTimeStamp) {
+  //JavaScript函数：
+  var minute = 1000 * 60;
+  var hour = minute * 60;
+  var day = hour * 24;
+  var halfamonth = day * 15;
+  var month = day * 30;
+  var now = new Date().getTime();
+  var diffValue = now - dateTimeStamp;
   if (diffValue < 0) {
-    return;
+    //若日期不符则弹出窗口告之
+    //alert("结束日期不能小于开始日期！");
+    return dateTimeStamp;
   }
-  let monthEnd = diffValue / month;
-  let weekEnd = diffValue / (7 * day);
-  let dayEnd = diffValue / day;
-  let hourEnd = diffValue / hour;
-  let minEnd = diffValue / minute;
-  let yearEnd = diffValue / year;
-  if (yearEnd >= 1) {
-    result = dateTime;
-  } else if (monthEnd >= 1) {
-    result = '' + parseInt(monthEnd) + '月前';
-  } else if (weekEnd >= 1) {
-    result = '' + parseInt(weekEnd) + '周前';
-  } else if (dayEnd >= 1) {
-    result = '' + parseInt(dayEnd) + '天前';
-  } else if (hourEnd >= 1) {
-    result = '' + parseInt(hourEnd) + '小时前';
-  } else if (minEnd >= 1) {
-    result = '' + parseInt(minEnd) + '分钟前';
-  } else {
-    result = '刚刚';
-  }
+  var monthC = diffValue / month;
+  var weekC = diffValue / (7 * day);
+  var dayC = diffValue / day;
+  var hourC = diffValue / hour;
+  var minC = diffValue / minute;
+  if (monthC >= 1) {
+    result = parseInt(monthC) + '个月前';
+  } else if (weekC >= 1) {
+    result = parseInt(weekC) + '周前';
+  } else if (dayC >= 1) {
+    result = parseInt(dayC) + '天前';
+  } else if (hourC >= 1) {
+    result = parseInt(hourC) + '个小时前';
+  } else if (minC >= 1) {
+    result = parseInt(minC) + '分钟前';
+  } else result = '刚刚';
   return result;
 }
 
