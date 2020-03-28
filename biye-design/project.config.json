@@ -98,10 +98,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 6,
 					"name": "付款页面",
 					"pathName": "pages/shop/pay/index",
-					"query": "",
+					"query": "order_id=10063&goods_id=10005",
 					"scene": null
 				},
 				{

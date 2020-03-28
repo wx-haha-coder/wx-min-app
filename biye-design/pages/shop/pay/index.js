@@ -16,6 +16,7 @@ Page({
     number: 1,
     canBuy: true,
     totalPrice: '',
+    showPayPopup: false
   },
 
   onLoad: function(option) {
@@ -49,6 +50,12 @@ Page({
     this.setData({
       number: number + 1,
       totalPrice: Multiply(price, number + 1),
+    });
+  },
+
+  prevSubmitOrder() {
+    this.setData({
+      showPayPopup: true,
     });
   },
 
@@ -99,6 +106,11 @@ Page({
           totalPrice: Multiply(detail.goods_price, this.data.number),
         });
       }
+    });
+  },
+  handleClose() {
+    this.setData({
+      showPayPopup: false,
     });
   },
 });
