@@ -5,6 +5,7 @@
       auto-height
       placeholder="填写评价内容"
       bind:input="handleInput"
+      value="{{comment}}"
     />
     <view class="comment-btn">
       <x-button

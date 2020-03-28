@@ -20,6 +20,7 @@
       radius='{{6}}'
       class='x-btn-class'
       wx:if='{{order.pay_status.value === 10 }}'
+      bind:tap="handleBuy"
     >
       <text class='buy-btn'>去付款</text>
     </x-button>

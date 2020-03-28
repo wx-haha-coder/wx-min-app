@@ -1,5 +1,4 @@
-/*eslint-disable*/
-const { updateOrder, getGoodDetail } = require('../../../api/shop');
+const { updateOrder, getGoodDetail, submitOrder } = require('../../../api/shop');
 
 const { Multiply } = require('../../../utils/util.js');
 
@@ -16,23 +15,21 @@ Page({
     number: 1,
     canBuy: true,
     totalPrice: '',
-    showPayPopup: false
+    showPayPopup: false,
+    fromPayList: false,
   },
 
-  onLoad: function(option) {
+  onLoad(option){
     this.setData({
       order_id: option.order_id,
       number: option.number || 1,
       goods_id: option.goods_id,
-    });
-
-    this.getGoodDetail();
+      showPayPopup: !!option.showpay || false,
+      fromPayList: !!option.fromPayList,
+    })
   },
-  onShow: function(options) {
-    const { number, price } = this.data;
-    this.setData({
-      totalPrice: Multiply(price, number + 1),
-    });
+  onShow(option) {
+    this.getGoodDetail();
   },
 
   handleReduce: function() {
@@ -57,24 +54,45 @@ Page({
     this.setData({
       showPayPopup: true,
     });
+    this.submitOrder();
   },
 
-  submitOrder: function() {
+  submitOrder(){
+    const { goods_id ,number } = this.data;
+    submitOrder({
+      goods_id,
+      goods_num: number,
+    })
+      .then(resp => {
+        wx.hideLoading();
+        if (resp.code === 1) {
+          const id = this.data.id;
+          this.setData({
+            order_id: resp.data.insert_id
+          })
+        }
+      })
+      .catch(() => {
+        wx.hideLoading();
+      });
+  },
+
+  updateOrder: function() {
     wx.showLoading({
       mask: true,
     });
-    const { number, order_id } = this.data;
+    const { order_id } = this.data;
     updateOrder({
-      order_id: order_id,
-      goods_num: number,
+      order_id,
     })
       .then(resp => {
         if (resp.code === 1) {
           wx.showToast({
             title: '下单成功',
           });
+          this.handleClose();
           setTimeout(() => {
-            wx.navigateTo({
+            wx.redirectTo({
               url: '/pages/user/order/index?type=1',
             });
           }, 100);
@@ -109,6 +127,11 @@ Page({
     });
   },
   handleClose() {
+    const { fromPayList } = this.data;
+    if(fromPayList){
+      wx.navigateBack();
+      return;
+    }
     this.setData({
       showPayPopup: false,
     });

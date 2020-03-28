@@ -1,6 +1,4 @@
-/*eslint-disable*/
 const {
-  submitOrder,
   getAdmireCount,
   getGoodDetail,
   postLike,
@@ -51,30 +49,9 @@ Page({
     if(!isLogin){
       return;
     }
-    wx.showLoading({
-      title: ""
+    wx.navigateTo({
+      url: `/pages/shop/pay/index?&goods_id=${id}`
     });
-    submitOrder({
-      goods_id: id,
-      goods_num: 1
-    })
-      .then(resp => {
-        wx.hideLoading();
-        if (resp.code === 1) {
-          const id = this.data.id;
-          wx.navigateTo({
-            url: `/pages/shop/pay/index?order_id=${resp.data.insert_id}&goods_id=${id}`
-          });
-        } else {
-          wx.showToast({
-            title: resp.msg,
-            icon: "none"
-          });
-        }
-      })
-      .catch(() => {
-        wx.hideLoading();
-      });
   },
   getDetail: function() {
     const { id } = this.data;

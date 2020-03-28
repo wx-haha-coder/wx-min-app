@@ -117,5 +117,16 @@ App({
     wx.navigateTo({
       url: "/pages/login/login?next=/" + toPath
     });
+  },
+  
+  logout(flag){
+    wx.removeStorageSync("token");
+    wx.removeStorageSync("user_id");
+    // 是否回到首页
+    if(flag){
+      wx.switchTab({
+        url:'/pages/index/index'
+      })
+    }
   }
 });

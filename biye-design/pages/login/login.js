@@ -7,7 +7,6 @@ Page({
   data: {},
 
   onShow() {
-    console.log(App.checkLogin());
     if (App.checkLogin()) {
       // this.navigateBack();
     }

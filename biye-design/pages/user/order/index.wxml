@@ -27,10 +27,16 @@
       class="x-order-item"
       order="{{item}}"
       goods="{{item.goods[0]}}"
+      bind:rebuy="handleReBuy"
+      data-id="{{item.order_id}}"
     ></order-item>
   </block>
 </view>
 
 <block wx:if="{{end}}">
   <no-more>已经到底了</no-more>
+</block>
+
+<block wx:if="{{!loading && !orderList.length}}">
+  <no-more>暂无订单</no-more>
 </block>

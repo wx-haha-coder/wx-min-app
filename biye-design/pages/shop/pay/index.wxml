@@ -93,7 +93,7 @@
       ￥ {{totalPrice}}
       </view>
     </view>
-    <view class="popup-pay-button" bind:tap="submitOrder">
+    <view class="popup-pay-button" bind:tap="updateOrder">
       确认支付
     </view>
     <image

@@ -1,14 +1,15 @@
-const App = getApp();
+var App = getApp();
+
 
 Page({
   data: {
-    userInfo: App.globalData.userInfo,
+    userInfo: null,
     version: '',
     token: '',
     location: [],
   },
 
-  onLoad() {
+  onShow() {
     this.getUserData();
   },
 
@@ -19,13 +20,18 @@ Page({
       that.setData({
         token: wx.getStorageSync('token'),
       });
-      App.getUserInfo(function(res) {
-        const { userInfo } = res;
-        that.setData({
-          userInfo,
-          location: [userInfo.province, userInfo.city].join(' / '),
+
+      if(!this.data.userInfo){
+        wx.showLoading({mask:true})
+        App.getUserInfo(function(res) {
+          const { userInfo } = res;
+          wx.hideLoading()
+          that.setData({
+            userInfo,
+            location: [userInfo.province, userInfo.city].join(' / '),
+          });
         });
-      });
+      }
     }
   },
   // 登录
@@ -50,7 +56,16 @@ Page({
 
   goLink(url){
     wx.navigateTo({
-      url: link,
+      url,
     });
+  },
+
+  handleLogout(){
+    wx.showLoading({mask: true});
+    App.logout();
+    setTimeout(()=>{
+      this.setData({userInfo: null , token:''});
+      wx.hideLoading();
+    },200)
   }
 });
