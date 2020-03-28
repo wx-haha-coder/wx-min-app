@@ -47,6 +47,10 @@ Page({
 
   handleBuy: function(e) {
     const { id } = this.data;
+    const isLogin = App.checkLogin(true);
+    if(!isLogin){
+      return;
+    }
     wx.showLoading({
       title: ""
     });

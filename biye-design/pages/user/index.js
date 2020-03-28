@@ -37,9 +37,20 @@ Page({
 
   // 跳转
   handleGoLink(e) {
-    const { link } = e.currentTarget.dataset;
+    const { link , auth } = e.currentTarget.dataset;
+    if(auth != 1){
+      this.goLink(link);
+      return
+    }
+    const isLogin =  App.checkLogin(true)
+    if(isLogin){
+      this.goLink(link);
+    }
+  },
+
+  goLink(url){
     wx.navigateTo({
       url: link,
     });
-  },
+  }
 });

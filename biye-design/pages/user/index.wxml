@@ -28,6 +28,7 @@
       class="user-menu-item line-normal-bottom"
       bind:tap="handleGoLink"
       data-link="/pages/user/message/index"
+      data-auth="1"
     >
       <image
         class="user-menu-icon"
@@ -44,6 +45,7 @@
     <view
       class="user-menu-item line-normal-bottom"
       bind:tap="handleGoLink"
+      data-auth="1"
       data-link="/pages/user/order/index"
     >
       <image

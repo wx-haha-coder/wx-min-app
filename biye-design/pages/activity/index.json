@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "首页",
+  "navigationBarTitleText": "校园活动",
   "usingComponents": {
     "no-more": "/components/no-more/index"
   }
