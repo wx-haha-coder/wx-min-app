@@ -69,5 +69,5 @@ module.exports = {
   Add: Add,
   Minus: Minus,
   Multiply: Multiply,
-  Division: Division
+  Division: Division,
 };

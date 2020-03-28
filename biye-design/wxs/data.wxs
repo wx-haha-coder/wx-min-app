@@ -1,4 +1,0 @@
-// eslint-disable-next-line no-var
-var messageData = [{}];
-
-module.exports.messageData = messageData;

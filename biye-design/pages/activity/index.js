@@ -1,4 +1,5 @@
 const { home } = require('../../api/index');
+const { messageData } = require('../../mock/data');
 
 const App = getApp();
 
@@ -9,40 +10,8 @@ Page({
   data: {
     showDots: true,
     bannerHeight: 380,
-    bannerList: [
-      {
-        id: 1,
-        imgUrl: 'http://47.105.164.12/school/web/uploads/school1.png',
-      },
-      {
-        id: 2,
-        imgUrl: 'http://47.105.164.12/school/web/uploads/school2.png',
-      },
-      {
-        id: 3,
-        imgUrl: 'http://47.105.164.12/school/web/uploads/school3.png',
-      },
-    ],
-    activityList: [
-      {
-        id: 1,
-        title: '2019年第九届全国大学生电子商务“创新创意及创业”挑战赛',
-        imgUrl: 'http://47.105.164.12/school/web/uploads/school1.png',
-        date: '2019-12-24',
-      },
-      {
-        id: 2,
-        title: '2019年银杏 “英语竞赛”',
-        imgUrl: 'http://47.105.164.12/school/web/uploads/school2.png',
-        date: '2019-06-10',
-      },
-      {
-        id: 3,
-        title: '2020年应届毕业生“银杏双选会”',
-        imgUrl: 'http://47.105.164.12/school/web/uploads/school1.png',
-        date: '2019-10-31',
-      },
-    ],
+    bannerList: messageData,
+    activityList: messageData,
     listEnd: false,
     page: 1,
   },
@@ -72,9 +41,7 @@ Page({
     });
   },
 
-  handleLike: e => {
-    const { id } = e.currentTarget.dataset;
-  },
+  handleLike: e => {},
 
   handleComment: e => {
     const isLogin = App.checkLogin();

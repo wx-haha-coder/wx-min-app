@@ -1,32 +1,35 @@
-.bg{
+.bg {
   background-color: #f2f2f2;
   min-height: 100vh;
 }
-.msg-item{
+.msg-list {
+  padding-top: 12rpx;
+}
+.msg-item {
   padding: 20rpx 32rpx;
-  margin-bottom: 10rpx;
+  margin-bottom: 12rpx;
   background-color: #fff;
 }
 
-.msg-title{
+.msg-title {
   position: relative;
   font-size: 28rpx;
   padding-bottom: 16rpx;
-  color:#585555;
+  color: #585555;
 }
 
-.msg-title::after{
-  border-color:#efefef;
+.msg-title::after {
+  border-color: #efefef;
 }
 
-.msg-subinfo{
+.msg-subinfo {
   text-align: right;
   font-size: 24rpx;
   color: #868686;
   padding-top: 16rpx;
 }
 
-.empty-tip{
+.empty-tip {
   width: 60%;
   margin: 60rpx auto;
 }

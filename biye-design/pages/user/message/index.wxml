@@ -1,18 +1,20 @@
 <block wx:if="{{dataNull}}">
   <view class="empty-tip">
-    <no-more>暂无消息</no-more>
+    <no-more>最近暂无消息</no-more>
   </view>
 </block>
-<block wxif="{{msgList && msgList.length}}">
+<block wx:if="{{msgList && msgList.length}}">
   <view class="bg">
-    <block
-      wx:for="{{msgList}}"
-      key="id"
-    >
-      <view class="msg-item">
-        <view class="msg-title line-normal-bottom">{{item.title}}</view>
-        <view class="msg-subinfo">{{item.date}}</view>
-      </view>
-    </block>
+    <view class="msg-list">
+      <block
+        wx:for="{{msgList}}"
+        wx:key="id"
+      >
+        <view class="msg-item">
+          <view class="msg-title line-normal-bottom">{{item.title}}</view>
+          <view class="msg-subinfo">{{item.create_date}}</view>
+        </view>
+      </block>
+    </view>
   </view>
 </block>

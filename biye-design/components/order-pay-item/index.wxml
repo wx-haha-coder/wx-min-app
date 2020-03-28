@@ -1,5 +1,5 @@
 <wxs
-  src="./../../wxs/float-calc.wxs"
+  src="./../../mock/float-calc.wxs"
   module="math"
 />
 <view class="rect line-normal-all {{ isKind ? 'kind-box' : '' }}">
