@@ -1,6 +1,8 @@
 const { getCommentList, postComment } = require('../../api/shop');
 const { getDateDiff } = require('../../utils/util');
 
+const App = getApp();
+
 Page({
   /**
    * 页面的初始数据
@@ -27,10 +29,12 @@ Page({
    */
   onReachBottom() {
     const { listEnd } = this.data;
+
+    console.log(listEnd)
     if (listEnd) {
       return;
     }
-
+    this.setData({page: this.data.page+1});
     this.getComments();
   },
   // 获取评论记录
@@ -43,10 +47,21 @@ Page({
       if (resp.code === 1) {
         const currPgae = resp.data.current_page;
         const lastPage = resp.data.last_page;
-        commentList.unshift(...this.dateFilter(resp.data.data));
+        // const pageSize = resp.data.per_page;
+        let list = this.dateFilter(resp.data.data);
+        // let listEnd = false;
+        // if(currPgae && list.length< pageSize || (currPgae>1 && currPgae === lastPage)){
+        //   listEnd = true
+        // }
+        if(currPgae > 1 ){
+          list = list.concat(commentList);
+        }
+
+        console.log(commentList);
+
         this.setData({
-          commentList: [...commentList],
-          listEnd: currPgae === lastPage && commentList.length > 0,
+          commentList: list,
+          listEnd: currPgae === lastPage,
           page: resp.data.current_page,
         });
       }
@@ -57,6 +72,10 @@ Page({
   },
   // 评论
   handleComment() {
+    const isLogin = App.checkLogin(true);
+    if(!isLogin){
+      return;
+    }
     const { id, comment } = this.data;
     wx.showLoading({ mask: true });
     postComment({
