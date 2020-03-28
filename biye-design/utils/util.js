@@ -2,12 +2,12 @@
 function Add(arg1, arg2) {
   var r1, r2, m;
   try {
-    r1 = arg1.toString().split(".")[1].length;
+    r1 = arg1.toString().split('.')[1].length;
   } catch (e) {
     r1 = 0;
   }
   try {
-    r2 = arg2.toString().split(".")[1].length;
+    r2 = arg2.toString().split('.')[1].length;
   } catch (e) {
     r2 = 0;
   }
@@ -18,12 +18,12 @@ function Add(arg1, arg2) {
 function Minus(arg1, arg2) {
   var r1, r2, m, n;
   try {
-    r1 = arg1.toString().split(".")[1].length;
+    r1 = arg1.toString().split('.')[1].length;
   } catch (e) {
     r1 = 0;
   }
   try {
-    r2 = arg2.toString().split(".")[1].length;
+    r2 = arg2.toString().split('.')[1].length;
   } catch (e) {
     r2 = 0;
   }
@@ -40,10 +40,10 @@ function Multiply(arg1, arg2) {
   var m = 0,
     s1 = arg1.toString(),
     s2 = arg2.toString();
-  m += s1.split(".")[1] ? s1.split(".")[1].length : 0;
-  m += s2.split(".")[1] ? s2.split(".")[1].length : 0;
-  var num1 = s1.replace(".", "") * 1;
-  var num2 = s2.replace(".", "") * 1;
+  m += s1.split('.')[1] ? s1.split('.')[1].length : 0;
+  m += s2.split('.')[1] ? s2.split('.')[1].length : 0;
+  var num1 = s1.replace('.', '') * 1;
+  var num2 = s2.replace('.', '') * 1;
   return ((num1 * num2) / Math.pow(10, m)).toFixed(2);
 }
 //修改之后的除法
@@ -53,21 +53,21 @@ function Division(arg1, arg2) {
     r1,
     r2;
   try {
-    t1 = arg1.toString().split(".")[1].length;
+    t1 = arg1.toString().split('.')[1].length;
   } catch (e) {}
   try {
-    t2 = arg2.toString().split(".")[1].length;
+    t2 = arg2.toString().split('.')[1].length;
   } catch (e) {}
   with (Math) {
-    r1 = Number(arg1.toString().replace(".", ""));
-    r2 = Number(arg2.toString().replace(".", ""));
+    r1 = Number(arg1.toString().replace('.', ''));
+    r2 = Number(arg2.toString().replace('.', ''));
     return (r1 / r2) * pow(10, t2 - t1);
   }
 }
 
 function getDateDiff(dateTime) {
   let dateTimeStamp = new Date(dateTime).getTime();
-  let result = "";
+  let result = '';
   let minute = 1000 * 60;
   let hour = minute * 60;
   let day = hour * 24;
@@ -88,17 +88,17 @@ function getDateDiff(dateTime) {
   if (yearEnd >= 1) {
     result = dateTime;
   } else if (monthEnd >= 1) {
-    result = "" + parseInt(monthEnd) + "月前";
+    result = '' + parseInt(monthEnd) + '月前';
   } else if (weekEnd >= 1) {
-    result = "" + parseInt(weekEnd) + "周前";
+    result = '' + parseInt(weekEnd) + '周前';
   } else if (dayEnd >= 1) {
-    result = "" + parseInt(dayEnd) + "天前";
+    result = '' + parseInt(dayEnd) + '天前';
   } else if (hourEnd >= 1) {
-    result = "" + parseInt(hourEnd) + "小时前";
+    result = '' + parseInt(hourEnd) + '小时前';
   } else if (minEnd >= 1) {
-    result = "" + parseInt(minEnd) + "分钟前";
+    result = '' + parseInt(minEnd) + '分钟前';
   } else {
-    result = "刚刚";
+    result = '刚刚';
   }
   return result;
 }
@@ -108,5 +108,5 @@ module.exports = {
   Minus,
   Multiply,
   Division,
-  getDateDiff
+  getDateDiff,
 };

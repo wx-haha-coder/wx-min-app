@@ -33,7 +33,7 @@
 }
 
 .item-subtext {
-  color: #B0A9A3;
+  color: #b0a9a3;
   font-size: 24rpx;
   line-height: 36rpx;
   font-weight: 500;
@@ -42,7 +42,7 @@
 
 .item-action {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-top: 24rpx;
 }
 
@@ -50,6 +50,12 @@
   width: 140rpx;
 }
 
-.x-btn-class .buy-btn{
+.x-btn-class .buy-btn {
   font-size: 24rpx;
+}
+
+.order-number,
+.order-complete {
+  font-size: 24rpx;
+  color: #a2a2a2;
 }

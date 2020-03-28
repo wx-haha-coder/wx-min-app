@@ -1,34 +1,40 @@
-<view class="wrap">
-  <view class="item-content line-normal-bottom">
-    <view class="cover-img">
-      <image src="{{order.goods[0].image.file_path}}" />
+<view class='wrap'>
+  <view class='item-content line-normal-bottom'>
+    <view class='cover-img'>
+      <image src='{{order.goods[0].image.file_path}}' />
     </view>
-    <view class="item-main">
-      <view class="item-name text-hidden">{{goods.goods_name}}</view>
-      <view class="item-subinfo item-subtext">数量：{{order.total_price}}</view>
-      <view class="item-price item-subtext">
+    <view class='item-main'>
+      <view class='item-name text-hidden'>{{goods.goods_name}}</view>
+      <view class='item-subinfo item-subtext'>数量：{{goods.total_num}}</view>
+      <view class='item-price item-subtext'>
         金额：
         <text>{{order.total_price}}</text>
       </view>
     </view>
   </view>
-  <view class="item-action">
+  <view class='item-action'>
+    <view class='order-number'>订单号：{{order.order_no}}</view>
     <x-button
-      size="small"
-      type="primary"
-      radius="{{6}}"
-      class="x-btn-class"
-      wx:if="{{order.pay_status.value === 10 }}"
+      size='small'
+      type='primary'
+      radius='{{6}}'
+      class='x-btn-class'
+      wx:if='{{order.pay_status.value === 10 }}'
     >
-      <text class="buy-btn">去付款</text>
+      <text class='buy-btn'>去付款</text>
     </x-button>
-    <x-button
-      size="small"
-      radius="{{6}}"
-      class="x-btn-class"
-      wx:if="{{order.pay_status.value === 20 }}"
+
+    <text
+      class='order-complete'
+      wx:if='{{order.pay_status.value === 20 }}'
+    >{{order.pay_status.text}}</text>
+    <!-- <x-button
+      size='small'
+      radius='{{6}}'
+      class='x-btn-class'
+      wx:if='{{order.pay_status.value === 20 }}'
     >
-      <text class="buy-btn">再次购买</text>
-    </x-button>
+      <text class='buy-btn'>已完成</text>
+    </x-button>-->
   </view>
 </view>

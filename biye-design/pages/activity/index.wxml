@@ -10,13 +10,13 @@
   </swiper>
 </view>
 <view class="page product-list">
-  <block wx:for="{{shopList}}" wx:key="goods_id">
+  <block wx:for="{{activityList}}" wx:key="goods_id">
     <view class="activity-item line-normal-bottom">
-      <image class="product-img" src="{{item.image[0].file_path}}" mode="aspectFill" data-id="{{item.goods_id}}" bind:tap="goDetail" />
+      <image class="product-img" src="{{item.imgUrl}}" mode="aspectFill" data-id="{{item.id}}"/>
       <view class="activity-sub">
-        <view class="activity-title text-hidden">{{item.goods_name}}</view>
+        <view class="activity-title text-hidden">{{item.title}}</view>
         <view class="activity-desc">
-          活动介绍介绍
+          {{item.date}}
         </view>
       </view>
     </view>

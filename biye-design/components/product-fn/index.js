@@ -35,14 +35,14 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    handleLike: function() {
-      this.triggerEvent("onLike");
+    handleLike: function handleLike() {
+      this.triggerEvent('onLike');
     },
-    handleCollect: function() {
-      this.triggerEvent("onCollect");
+    handleCollect: function handleLike() {
+      this.triggerEvent('onCollect');
     },
-    handleComment: function() {
-      this.triggerEvent("onComment");
-    }
-  }
+    handleComment: function handleLike() {
+      this.triggerEvent('onComment');
+    },
+  },
 });

@@ -1,4 +1,4 @@
-const { getOrderList } = require("../../../api/shop");
+const { getOrderList } = require('../../../api/shop');
 Page({
   /**
    * 页面的初始数据
@@ -7,36 +7,34 @@ Page({
     tabList: [
       {
         id: 1,
-        label: "全部"
+        label: '全部',
       },
       {
         id: 2,
-        label: "已完成"
+        label: '已完成',
       },
       {
         id: 3,
-        label: "待付款"
-      }
+        label: '待付款',
+      },
     ],
     currentTab: 1,
     orderList: [],
     page: 1,
-    end: false
+    end: false,
   },
 
-  onLoad: function(options) {
+  onLoad: function onLoad(options) {
     this.setData({
-      currentTab: options.tab
+      currentTab: options.tab,
     });
   },
 
-  onReady: function() {
+  onReady: function onReady() {
     this.getOrderList();
   },
 
-  onShow: function() {},
-
-  onReachBottom: function() {
+  onReachBottom: function onReachBottom() {
     const { page, end } = this.data;
     if (end) {
       return;
@@ -59,27 +57,26 @@ Page({
     getOrderList({
       page,
       status,
-      ...param
+      ...param,
     })
       .then(resp => {
         wx.hideLoading();
         if (resp.code === 1) {
           const {
-            data: { list }
+            data: { list },
           } = resp;
           const { orderList } = this.data;
           this.setData({
-            orderList:
-              list.current_page > 1 ? orderList.concat(list.data) : list.data,
+            orderList: list.current_page > 1 ? orderList.concat(list.data) : list.data,
             page: list.current_page,
-            end: list.current_page === list.last_page
+            end: list.current_page === list.last_page,
           });
         }
       })
       .catch(() => {
         wx.hideLoading();
         wx.showToast({
-          title: "网络错误"
+          title: '网络错误',
         });
       });
   },
@@ -88,8 +85,8 @@ Page({
     const { id } = e.currentTarget.dataset;
     this.setData({
       currentTab: id,
-      orderList: []
+      orderList: [],
     });
     this.getOrderList();
-  }
+  },
 });

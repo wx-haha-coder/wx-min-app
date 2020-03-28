@@ -3,9 +3,9 @@ const App = getApp();
 Page({
   data: {
     userInfo: App.globalData.userInfo,
-    version: "",
-    token: "",
-    location: []
+    version: '',
+    token: '',
+    location: [],
   },
 
   onLoad() {
@@ -17,13 +17,13 @@ Page({
     const that = this;
     if (App.checkLogin()) {
       that.setData({
-        token: wx.getStorageSync("token")
+        token: wx.getStorageSync('token'),
       });
       App.getUserInfo(function(res) {
         const { userInfo } = res;
         that.setData({
           userInfo,
-          location: [userInfo.province, userInfo.city].join(" / ")
+          location: [userInfo.province, userInfo.city].join(' / '),
         });
       });
     }
@@ -31,7 +31,7 @@ Page({
   // 登录
   handleLogin() {
     wx.navigateTo({
-      url: "/pages/login/login?next=/pages/user/index"
+      url: '/pages/login/login?next=/pages/user/index',
     });
   },
 
@@ -39,7 +39,7 @@ Page({
   handleGoLink(e) {
     const { link } = e.currentTarget.dataset;
     wx.navigateTo({
-      url: link
+      url: link,
     });
-  }
+  },
 });
